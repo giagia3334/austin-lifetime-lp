@@ -746,7 +746,7 @@ const SERVICES = [
 ];
 
 const SVC4 = [
-  ['Cosmetic smile', 'Thin porcelain veneers, whitening, bonding and laser gum contouring.', ['Porcelain veneers', 'Whitening', 'Bonding', 'Gum contouring'], 'Cosmetic', 'assistants.webp'],
+  ['Cosmetic smile design', 'Thin porcelain veneers, whitening, bonding and laser gum contouring.', ['Porcelain veneers', 'Whitening', 'Bonding', 'Gum contouring'], 'Cosmetic', 'assistants.webp'],
   ['Clear aligners', 'An iTero scan builds a 3D model, so you preview projected results before you begin.', ['iTero 3D scan', 'Invisalign'], 'Alignment', 'tech-itero.webp'],
   ['Dental implants', 'Every implant is digitally mapped before surgery and restored in the same office.', ['Single tooth', 'Full arch', 'Implant dentures'], 'Restore', 'tech-plan.webp'],
   ['Same-day crowns', 'Designed and made in the office with CEREC, in many cases in a single visit.', ['CEREC', 'Crowns', 'Bridges'], 'Restore', 'tech-cerec.webp'],
@@ -829,7 +829,7 @@ const S1 = [
         html: () => `<div class="sec"><div class="in">${head('', 'Services', '')}<div class="tiles">${SERVICES.map(s => `<a class="tile" href="#pk-form"><div class="ph">${img(s.f, s.t)}</div><h3>${s.t}</h3><p>${s.d}</p></a>`).join('')}</div></div></div>` },
       { name: 'Dark stacking cards (old)', hide: true, d: 'Cards slide over each other as you scroll: text and a short list left, photo right.',
         html: () => `<div class="sec deep"><div class="in">${head('Services', 'Everything your', 'smile needs')}<div class="stack">
-          ${[['Cosmetic smile', 'Thin porcelain veneers, whitening, bonding and laser gum contouring.', ['Porcelain veneers', 'In-office whitening', 'Bonding', 'Gum contouring'], 'r05a.webp'],
+          ${[['Cosmetic smile design', 'Thin porcelain veneers, whitening, bonding and laser gum contouring.', ['Porcelain veneers', 'In-office whitening', 'Bonding', 'Gum contouring'], 'r05a.webp'],
             ['Clear aligners', 'An iTero scan builds a 3D model so you can preview projected results before you begin.', ['iTero 3D scan', 'Projected result preview', 'Invisalign'], 'tech-itero.webp'],
             ['Dental implants', 'Every implant is digitally mapped before surgery and restored in the same office.', ['Single tooth', 'Full-arch options', 'Implant-supported dentures'], 'tech-plan.webp'],
             ['Same-day crowns', 'Designed and made in the office with CEREC, in many cases in a single visit.', ['Digital design', 'Made in-office', 'Crowns and bridges'], 'tech-cerec.webp']]
