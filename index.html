@@ -685,7 +685,7 @@ html.poplock,html.poplock body{overflow:hidden}
 .ffi{position:relative;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
 .fflip.on .ffi{transform:rotateY(180deg)}
 .ffa,.ffb{position:absolute;inset:0 0 auto;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.ffb{transform:rotateY(180deg);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:24px}
+.ffb{cursor:pointer;transform:rotateY(180deg);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:24px}
 .ffa .chips button{opacity:1;text-align:left}
 .ffback{border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:99px;padding:9px 15px;font:600 14px var(--body);cursor:pointer}
 .ffb h3{font-family:var(--disp);font-weight:600;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em;margin:18px 0 0;color:#fff}
@@ -738,6 +738,17 @@ body.introing{overflow:hidden}
 .fbox .form{border-radius:0;padding:22px 28px 10px;box-shadow:none}
 .fcall{margin:0;padding:6px 28px 24px;font-size:14.5px;color:var(--mute);background:var(--card)}
 @media (max-width:640px){.fbox{transform:none;border-radius:24px}.fbox .ptop{padding:24px 20px 20px}.fbox .form{padding:18px 20px 8px}.fcall{padding:4px 20px 20px}}
+
+/* cost and comfort: clear consult photo, answers on two cards */
+.cc2{display:grid;grid-template-columns:1.15fr 1fr;gap:18px;align-items:stretch}
+.ccp{margin:0;position:relative;border-radius:22px;overflow:hidden;min-height:360px}
+.ccp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 50%}
+.ccp figcaption{position:absolute;left:14px;right:14px;bottom:14px;font:600 13px/1.35 var(--body);color:#fff;background:rgba(26,35,39,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:14px;padding:10px 14px;max-width:max-content}
+.ccc{display:grid;gap:14px}
+.ccx{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:8px;align-content:start}
+.ccx h3{font-family:var(--disp);font-weight:600;font-size:clamp(20px,2.2vw,26px);letter-spacing:-.02em;margin:0;line-height:1.15}
+.ccx p:not(.eb){margin:0;color:var(--mute)}
+@media (max-width:640px){.cc2{grid-template-columns:1fr}.ccp{min-height:0;aspect-ratio:4/3}.ccx{padding:20px}}
 </style>
 <div id="app"></div><div id="intro" aria-hidden="true"><div class="ib"><img src="a/logo-white.png" alt=""><p><span style="animation-delay:0.75s">30</span> <span style="animation-delay:0.82s">years</span> <span style="animation-delay:0.89s">of</span> <span style="animation-delay:0.96s">serving</span> <span style="animation-delay:1.03s"><em>Austin</em></span></p><i></i></div></div>
 <div class="fab"><a class="bk" href="#pk-form" aria-label="Book a consult"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a><a class="tl3" href="tel:5128351924" aria-label="Call (512) 835-1924"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
@@ -994,10 +1005,11 @@ function teethWarp(src, o, M) {
     return s[i] * (1 - fx) * (1 - fy) + s[i + 4] * fx * (1 - fy) + s[i + W * 4] * (1 - fx) * fy + s[i + W * 4 + 4] * fx * fy; };
   for (let x = 0; x < W; x++) { const an = qAnchor(x), pr = Math.exp(-Math.pow((x - cx) / wd, 2)), ext = Lc * pr - lift * (1 - pr) * Math.min(1, Math.abs(x - cx) / 120);
     let dy = 0; for (const b of bumps) dy += b[1] * Math.exp(-Math.pow((x - b[0]) / 30, 2));
-    const fy = 1 + ext / 110, xs = cx + (x - cx) / sx;
-    for (let y = 0; y < H; y++) { const i = y * W + x, m = M[i]; if (m < .01) continue; const r = y - an; if (r <= 0 && sx === 1) continue;
-      const k = Math.max(0, Math.min(1, r / 40)), ys = r > 0 ? an + r / fy - dy * k : y, o4 = i * 4;
-      for (let c = 0; c < 3; c++) { let v = samp(xs, ys, c); if (mirror) v = v * (1 - mirror) + samp(2 * cx - xs, ys, c) * mirror; d[o4 + c] = d[o4 + c] + (v - d[o4 + c]) * m; } } }
+    const fy = 1 + ext / 110;
+    for (let y = 0; y < H; y++) { const i = y * W + x, m = M[i]; if (m < .01) continue; const r = y - an; if (r <= 0) continue; /* gumline and lip edge never move */
+      const k = Math.max(0, Math.min(1, r / 40)), xs = cx + (x - cx) / (1 + (sx - 1) * k), ys = an + r / fy - dy * k, o4 = i * 4;
+      const mr = mirror * Math.exp(-Math.pow((x - cx) / 170, 2)); /* even out the front teeth only; corners keep their own teeth, so nothing doubles */
+      for (let c = 0; c < 3; c++) { let v = samp(xs, ys, c); if (mr > .01) v = v * (1 - mr) + samp(2 * cx - xs, ys, c) * mr; d[o4 + c] = d[o4 + c] + (v - d[o4 + c]) * m; } } }
   return out;
 }
 function quizTeeth(el) {
@@ -1220,8 +1232,8 @@ const S3 = [
       { name: 'Two plain columns', d: 'Cost on the left, comfort on the right, each under a thick line.',
         html: () => `<div class="sec"><div class="in"><div class="two"><div class="c"><p class="eb">(What will it cost?)</p><h3>A personalized estimate before anything is scheduled.</h3><ul><li>Payment options with CareCredit and Cherry.</li><li>Parmer membership: save 10% on procedures with Adult Complete ($448 a year).</li><li>We’re happy to file insurance claims on your behalf.</li></ul></div>
           <div class="c"><p class="eb">(How we keep visits comfortable)</p><h3>Gentle dentistry, honest answers.</h3><ul><li>Nitrous oxide, oral sedation and IV sedation are available.</li><li>A comfort menu with warm blankets, neck pillows and noise-cancelling headphones.</li><li>Every visit is judgment-free. We listen first.</li></ul></div></div></div></div>` },
-      { name: 'Glass cards over the waiting room', d: 'The same two answers on frosted cards over a photo of the reception.',
-        html: () => `<div class="sec"><div class="in"><div class="over" style="min-height:440px">${img('waiting.webp', 'The Parmer Lane waiting room')}<div class="gcards"><div class="glass"><p class="eb" style="color:#fff;opacity:.85">(Cost)</p><h3>A personalized estimate before anything is scheduled.</h3><p>CareCredit and Cherry payment options. Parmer membership saves 10% on procedures.</p></div><div class="glass"><p class="eb" style="color:#fff;opacity:.85">(Comfort)</p><h3>Gentle dentistry, honest answers.</h3><p>Nitrous oxide, oral and IV sedation. Warm blankets, neck pillows and noise-cancelling headphones.</p></div></div></div></div></div>` },
+      { name: 'Consult photo with two cards', d: 'A clear photo of a consult (the plan on screen, the patient asking) with the cost and comfort answers on two cards below it.',
+        html: () => `<div class="sec"><div class="in"><div class="cc2"><figure class="ccp">${img('consult.webp', 'A dentist at Parmer Lane walking a patient through her scan on screen')}<figcaption>Your plan and estimate, on screen, before anything is booked</figcaption></figure><div class="ccc"><div class="ccx"><p class="eb">(Cost)</p><h3>A personalized estimate before anything is scheduled.</h3><p>CareCredit and Cherry payment options. Parmer membership saves 10% on procedures.</p></div><div class="ccx"><p class="eb">(Comfort)</p><h3>Gentle dentistry, honest answers.</h3><p>Nitrous oxide, oral and IV sedation. Warm blankets, neck pillows and noise-cancelling headphones.</p></div></div></div></div></div>` },
       { name: 'Question and answer rows', d: 'Four short questions with the answer beside each. Reads like a calm conversation.',
         html: () => `<div class="sec"><div class="in">${head('Good to know', 'Clear answers', 'from day one')}<div class="qa">${[['What will it cost?', 'You get a personalized estimate at your consult, before any treatment is booked.'], ['Can I pay over time?', 'Yes. We offer payment options with CareCredit and Cherry.'], ['Is there a membership plan?', 'The Parmer membership saves 10% on procedures with Adult Complete, $448 a year.'], ['Will I be comfortable?', 'Nitrous oxide, oral sedation and IV sedation are available, with warm blankets and noise-cancelling headphones.']].map(q => `<div><h3>${q[0]}</h3><p>${q[1]}</p></div>`).join('')}</div></div></div>` },
     ],
@@ -1262,12 +1274,12 @@ const S3 = [
         html: () => `<div class="sec"><div class="in">${head('Questions', 'Good to know', 'before your visit')}<div class="faq1">${FAQS.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary><i>0${i + 1}</i>${f[0]}</summary><p>${f[1]}</p></details>`).join('')}</div></div></div>` },
       { name: 'All answers visible in two columns', d: 'Nothing to tap: six short answers laid out in a grid.',
         html: () => `<div class="sec"><div class="in">${head('Questions', 'Good to know', 'before your visit')}<div class="fgrid">${FAQS.map(f => `<div><h3>${f[0]}</h3><p>${f[1]}</p></div>`).join('')}</div></div></div>` },
-      { name: 'Questions that flip to the answer', d: 'Tap a question and the card flips to show only that question and its answer. One tap on “All questions” flips back.',
+      { name: 'Questions that flip to the answer', d: 'Tap a question and the card flips to show only that question and its answer. One tap anywhere on the answer flips back.',
         html: () => `<div class="sec deep"><div class="in fone">${head('Questions', 'Ask us', 'anything')}<div class="fflip"><div class="ffi"><div class="ffa"><div class="chips" role="group" aria-label="Questions">${FAQS.map((f, i) => `<button type="button" data-q="${i}">${f[0]}</button>`).join('')}</div></div><div class="ffb" aria-live="polite"><button type="button" class="ffback">← All questions</button><h3></h3><p class="ans"></p></div></div></div></div></div>`,
         init: el => { const w = el.querySelector('.fflip'), b = el.querySelector('.ffb'), a = el.querySelector('.ffa');
           const fit = () => { w.style.height = Math.max(a.scrollHeight, w.classList.contains('on') ? b.scrollHeight : 0) + 'px'; };
           el.querySelectorAll('.ffa [data-q]').forEach(x => x.addEventListener('click', () => { const f = FAQS[+x.dataset.q]; b.querySelector('h3').textContent = f[0]; b.querySelector('.ans').textContent = f[1]; w.classList.add('on'); a.inert = true; b.inert = false; fit(); setTimeout(() => b.querySelector('.ffback').focus({ preventScroll: true }), 350); }));
-          b.querySelector('.ffback').addEventListener('click', () => { w.classList.remove('on'); a.inert = false; b.inert = true; fit(); });
+          b.addEventListener('click', () => { if (!w.classList.contains('on')) return; w.classList.remove('on'); a.inert = false; b.inert = true; fit(); }); /* tap anywhere on the answer to flip back */
           b.inert = true; addEventListener('resize', fit); requestAnimationFrame(fit); } },
       { name: 'Swipe cards', d: 'Each question and answer on its own card in one row. Swipe on phones, arrows on desktop. About a third of the height.',
         html: () => `<div class="sec"><div class="in">${head('Questions', 'Good to know', 'before your visit')}<div class="fqrail">${FAQS.map((f, i) => `<article class="fq"><i>0${i + 1}</i><h3>${f[0]}</h3><p>${f[1]}</p></article>`).join('')}</div><div class="rnav"><div class="dots"></div><div class="arr"><button type="button" class="rprev" aria-label="Previous question">←</button><button type="button" class="rnext" aria-label="Next question">→</button></div></div></div></div>`,
