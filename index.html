@@ -901,6 +901,27 @@ const S1 = [
       html: () => `<div class="ostrip"><div class="in"><a class="obar" href="#pk-form" data-offer><span class="oi"><b>Free</b> consultation</span><span class="osep" aria-hidden="true"></span><span class="oi"><b>50% off</b> your first cleaning</span><span class="ogo">Claim offer <i aria-hidden="true">→</i></span></a></div></div>` }],
   },
   {
+    id: 'services', name: 'Services', ref: 'IGOR · OperatorX · Monoform',
+    v: [
+      { name: 'Stacking cards with big numbers', d: 'The “How it works” card style you liked, used for services: four cards pile up as you scroll.',
+        html: () => `<div class="sec deep"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard" style="top:${76 + i * 16}px"><div class="num">0${i + 1}</div><div class="tx"><div class="lab"><span>${c[3]}</span><span>${c[2].length} treatments</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div></article>`).join('')}</div></div></div>` },
+      { name: 'Same cards with a photo', d: 'Text on the left, the photo fills the whole right half; both halves move as one card.',
+        html: () => `<div class="sec tint"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard ph2" style="top:${76 + i * 16}px;--i:${i}"><div class="tx"><div class="lab"><span>0${i + 1} · ${c[3]}</span><span>${c[2].length} treatments</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div><div class="pp">${img(c[4], c[0])}</div></article>`).join('')}</div></div></div>`,
+        init: el => stackInit(el) },
+      { name: 'Square photo tiles (IGOR)', d: 'The style you pointed at: square photos, a plain capital label under each.',
+        html: () => `<div class="sec"><div class="in">${head('', 'Services', '')}<div class="tiles">${SERVICES.map(s => `<a class="tile" href="#pk-form"><div class="ph">${img(s.f, s.t)}</div><h3>${s.t}</h3><p>${s.d}</p></a>`).join('')}</div></div></div>` },
+      { name: 'Dark stacking cards (old)', hide: true, d: 'Cards slide over each other as you scroll: text and a short list left, photo right.',
+        html: () => `<div class="sec deep"><div class="in">${head('Services', 'Everything your', 'smile needs')}<div class="stack">
+          ${[['Cosmetic smile design', 'Thin porcelain veneers, whitening, bonding and laser gum contouring.', ['Porcelain veneers', 'In-office whitening', 'Bonding', 'Gum contouring'], 'r05a.webp'],
+            ['Clear aligners', 'An iTero scan builds a 3D model so you can preview projected results before you begin.', ['iTero 3D scan', 'Projected result preview', 'Invisalign'], 'tech-itero.webp'],
+            ['Dental implants', 'Every implant is digitally mapped before surgery and restored in the same office.', ['Single tooth', 'Full-arch options', 'Implant-supported dentures'], 'tech-plan.webp'],
+            ['Same-day crowns', 'Designed and made in the office with CEREC, in many cases in a single visit.', ['Digital design', 'Made in-office', 'Crowns and bridges'], 'tech-cerec.webp']]
+            .map((c, i) => `<article class="scard" style="top:${76 + i * 14}px"><div class="tx"><div><h3>${c[0]}</h3><p>${c[1]}</p></div><ol>${c[2].map((x, j) => `<li data-n="(0${j + 1})">${x}</li>`).join('')}</ol></div><div class="ph">${img(c[3], c[0])}</div></article>`).join('')}</div></div></div>` },
+      { name: 'Numbered list rows', d: 'A clean index. On desktop a photo peeks out when you hover a row.',
+        html: () => `<div class="sec"><div class="in">${head('What we do', 'Six ways to a <em>new</em>', 'smile')}<div class="rows">${SERVICES.map((s, i) => `<div class="rw"><span class="n">0${i + 1}</span><h3>${s.t}</h3><div><p>${s.d}</p><div class="tags">${s.tags.map(t => `<i>${t}</i>`).join('')}</div></div><span class="go">↗</span><div class="peek">${img(s.f, '')}</div></div>`).join('')}</div></div></div>` },
+    ],
+  },
+  {
     id: 'years', name: '30 years line', ref: 'Text Video Mask · OperatorX · Monoform',
     v: [
       { name: 'Scroll film: 30 in video, zoom through', d: 'A huge “30” with the smiling team inside the digits. Scrolling swaps Precision, Artistry, Smiles, then zooms through the 0 into the video.',
@@ -920,27 +941,6 @@ const S1 = [
         html: () => `<div class="sec"><div class="in"><div class="yb"><div class="yb-t"><b class="yb-n">30</b><h2 class="hd">years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle all of your dental care right here, with doctors you know and trust.</p><ul><li><b>4.9 ★</b> 800+ Google reviews</li><li><b>6</b> dentists at one practice</li></ul></div><div class="yb-v">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div></div>` },
       { name: 'C: Full-screen video with text', d: 'The video fills the screen, a soft dark fade at the bottom, white heading on top.',
         html: () => `<div class="yc">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}<i class="yc-f" aria-hidden="true"></i><div class="in yc-t"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle all of your dental care right here, with doctors you know and trust.</p></div></div>` },
-    ],
-  },
-  {
-    id: 'services', name: 'Services', ref: 'IGOR · OperatorX · Monoform',
-    v: [
-      { name: 'Stacking cards with big numbers', d: 'The “How it works” card style you liked, used for services: four cards pile up as you scroll.',
-        html: () => `<div class="sec deep"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard" style="top:${76 + i * 16}px"><div class="num">0${i + 1}</div><div class="tx"><div class="lab"><span>${c[3]}</span><span>${c[2].length} treatments</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div></article>`).join('')}</div></div></div>` },
-      { name: 'Same cards with a photo', d: 'Text on the left, the photo fills the whole right half; both halves move as one card.',
-        html: () => `<div class="sec tint"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard ph2" style="top:${76 + i * 16}px;--i:${i}"><div class="tx"><div class="lab"><span>0${i + 1} · ${c[3]}</span><span>${c[2].length} treatments</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div><div class="pp">${img(c[4], c[0])}</div></article>`).join('')}</div></div></div>`,
-        init: el => stackInit(el) },
-      { name: 'Square photo tiles (IGOR)', d: 'The style you pointed at: square photos, a plain capital label under each.',
-        html: () => `<div class="sec"><div class="in">${head('', 'Services', '')}<div class="tiles">${SERVICES.map(s => `<a class="tile" href="#pk-form"><div class="ph">${img(s.f, s.t)}</div><h3>${s.t}</h3><p>${s.d}</p></a>`).join('')}</div></div></div>` },
-      { name: 'Dark stacking cards (old)', hide: true, d: 'Cards slide over each other as you scroll: text and a short list left, photo right.',
-        html: () => `<div class="sec deep"><div class="in">${head('Services', 'Everything your', 'smile needs')}<div class="stack">
-          ${[['Cosmetic smile design', 'Thin porcelain veneers, whitening, bonding and laser gum contouring.', ['Porcelain veneers', 'In-office whitening', 'Bonding', 'Gum contouring'], 'r05a.webp'],
-            ['Clear aligners', 'An iTero scan builds a 3D model so you can preview projected results before you begin.', ['iTero 3D scan', 'Projected result preview', 'Invisalign'], 'tech-itero.webp'],
-            ['Dental implants', 'Every implant is digitally mapped before surgery and restored in the same office.', ['Single tooth', 'Full-arch options', 'Implant-supported dentures'], 'tech-plan.webp'],
-            ['Same-day crowns', 'Designed and made in the office with CEREC, in many cases in a single visit.', ['Digital design', 'Made in-office', 'Crowns and bridges'], 'tech-cerec.webp']]
-            .map((c, i) => `<article class="scard" style="top:${76 + i * 14}px"><div class="tx"><div><h3>${c[0]}</h3><p>${c[1]}</p></div><ol>${c[2].map((x, j) => `<li data-n="(0${j + 1})">${x}</li>`).join('')}</ol></div><div class="ph">${img(c[3], c[0])}</div></article>`).join('')}</div></div></div>` },
-      { name: 'Numbered list rows', d: 'A clean index. On desktop a photo peeks out when you hover a row.',
-        html: () => `<div class="sec"><div class="in">${head('What we do', 'Six ways to a <em>new</em>', 'smile')}<div class="rows">${SERVICES.map((s, i) => `<div class="rw"><span class="n">0${i + 1}</span><h3>${s.t}</h3><div><p>${s.d}</p><div class="tags">${s.tags.map(t => `<i>${t}</i>`).join('')}</div></div><span class="go">↗</span><div class="peek">${img(s.f, '')}</div></div>`).join('')}</div></div></div>` },
     ],
   },
 ];
