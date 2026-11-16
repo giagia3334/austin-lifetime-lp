@@ -791,10 +791,6 @@ body.introing{overflow:hidden}
 .lgl header button{width:40px;height:40px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:20px;cursor:pointer}
 .lgl iframe{width:100%;height:100%;border:0}
 @media (max-width:640px){.lgl{padding:0;place-items:end stretch}.lgl .lb{border-radius:22px 22px 0 0;height:92vh}}
-/* computers: the top bar follows while scrolling, on a soft glass band that fades in */
-@media (min-width:721px){body.final .topnav{position:fixed;inset:0 0 auto;z-index:80;padding-top:14px;padding-bottom:14px;background:none;transition:padding .35s}
-  body.final .topnav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(18,26,31,.55),rgba(18,26,31,.38));backdrop-filter:blur(18px) saturate(1.6);-webkit-backdrop-filter:blur(18px) saturate(1.6);border-bottom:1px solid rgba(255,255,255,.12);opacity:0;transition:opacity .35s;-webkit-mask:linear-gradient(#000 70%,transparent);mask:linear-gradient(#000 70%,transparent)}
-  body.final .topnav.scr{padding-top:10px;padding-bottom:16px}body.final .topnav.scr::before{opacity:1}}
 /* 30-years video: no dark shade, text sits on a small solid white card */
 .yc-f{display:none}
 .yc-t{left:max(18px,calc((100% - var(--max))/2 + 18px));right:auto;bottom:6vh;width:min(520px,calc(100% - 36px));background:#fff;color:var(--ink);border-radius:22px;padding:26px 28px;box-shadow:0 24px 50px -26px rgba(0,0,0,.45)}
@@ -803,17 +799,18 @@ body.introing{overflow:hidden}
 /* visit cards: no width change on hover (text no longer re-wraps); gentle lift instead */
 @media (hover:hover){.acc3:hover .pn,.acc3 .pn:hover{flex:1}.acc3 .map,.acc3:hover .map{flex:1.6}
   .acc3 .pn{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}.acc3 .pn:hover{transform:translateY(-4px);box-shadow:0 22px 40px -26px rgba(26,35,39,.5)}}
-/* offer bar on computers: full-width gold ribbon right under the hero */
-@media (min-width:641px){.ostrip{margin-top:0;background:var(--gold);padding:0;position:relative;z-index:3}
-  .obar{background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;box-shadow:none;border-radius:0;color:var(--ink);padding:16px 0}
-  .obar:hover{background:none}.obar b{color:var(--ink);font-weight:800}.osep{background:rgba(0,0,0,.25)}.ogo{background:var(--ink);color:#fff}}
 /* 30-years video: back to no background behind the text */
 .yc-t{background:none;box-shadow:none;color:#fff;left:0;right:0;width:auto;margin-inline:auto;width:min(var(--max),100%);padding:0 18px}
 .yc-t .eb{color:rgba(255,255,255,.8)}.yc-t .hd{color:#fff;font-size:clamp(32px,4.6vw,60px)}.yc-t .hd em{color:var(--gold)}.yc-t p:not(.eb){color:#fff;max-width:520px}
 .yc-t>*{text-shadow:0 2px 18px rgba(0,0,0,.45)}
-/* top menu on computers: solid white bar instead of the dark shade */
-@media (min-width:721px){body.final .topnav,body.final .topnav.scr{background:#fff;padding-top:10px;padding-bottom:10px;box-shadow:0 1px 0 var(--line),0 10px 30px -22px rgba(26,35,39,.35)}
-  body.final .topnav::before{display:none}body.final .topnav .links{background:var(--mist2,#eef2f3)}}
+
+/* offer bar on computers: dark blue ribbon pinned to the bottom of the first screen */
+@media (min-width:641px){.hero1{min-height:calc(100vh - 72px);min-height:calc(100svh - 72px)}
+  .ostrip{margin-top:0;background:var(--night);padding:0;position:relative;z-index:3}
+  .obar{height:72px;box-sizing:border-box;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;box-shadow:none;border-radius:0;color:#fff;padding:0}
+  .obar:hover{background:none}.obar b{color:var(--gold);font-weight:700}.osep{background:rgba(255,255,255,.25)}.ogo{background:var(--gold);color:var(--ink)}}
+/* 30-years video on computers: show the whole 16:9 frame, no zoom */
+@media (min-width:768px){.yc{height:auto;min-height:0;aspect-ratio:16/9;max-height:none}}
 </style>
 <div id="app"></div><footer class="lf"><div class="in"><span>© 2026 Austin Lifetime Dental LLLP · 2206 W Parmer Ln, Austin, TX 78727</span><span class="lfl"><a href="https://www.lifetimedental.com/privacy-policy/" data-legal="Privacy Policy">Privacy Policy</a><a href="https://www.lifetimedental.com/terms-of-use-terms-of-service/" data-legal="Terms of Use">Terms of Use</a></span></div></footer><div id="intro" aria-hidden="true"><div class="ib"><div class="it"><p><span style="animation-delay:0.200s">3</span><span style="animation-delay:0.234s">0</span><span style="animation-delay:0.268s">&nbsp;</span><span style="animation-delay:0.302s">y</span><span style="animation-delay:0.336s">e</span><span style="animation-delay:0.370s">a</span><span style="animation-delay:0.404s">r</span><span style="animation-delay:0.438s">s</span><span style="animation-delay:0.472s">&nbsp;</span><span style="animation-delay:0.506s">o</span><span style="animation-delay:0.540s">f</span><span style="animation-delay:0.574s">&nbsp;</span><span style="animation-delay:0.608s">s</span><span style="animation-delay:0.642s">e</span><span style="animation-delay:0.676s">r</span><span style="animation-delay:0.710s">v</span><span style="animation-delay:0.744s">i</span><span style="animation-delay:0.778s">n</span><span style="animation-delay:0.812s">g</span><span style="animation-delay:0.846s">&nbsp;</span><em><span style="animation-delay:0.880s">A</span><span style="animation-delay:0.914s">u</span><span style="animation-delay:0.948s">s</span><span style="animation-delay:0.982s">t</span><span style="animation-delay:1.016s">i</span><span style="animation-delay:1.050s">n</span></em></p><i></i></div><img src="a/logo-white.png" alt=""></div></div>
 <div class="fab"><a class="bk" href="#pk-form" aria-label="Book a consult"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a><a class="tl3" href="tel:5128351924" aria-label="Call (512) 835-1924"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
@@ -903,7 +900,7 @@ const S1 = [
     id: 'years', name: '30 years line', ref: 'Text Video Mask · OperatorX · Monoform',
     v: [
       { name: 'Scroll film: 30 in video, zoom through', d: 'A huge “30” with the smiling team inside the digits. Scrolling swaps Precision, Artistry, Smiles, then zooms through the 0 into the video.',
-        html: () => `<div class="y30"><div class="y30s">${(() => { const t = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'tall' : 'wide'; return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg"`; })()} autoplay muted loop playsinline aria-hidden="true"></video><i class="y30dim" aria-hidden="true"></i>
+        html: () => `<div class="y30"><div class="y30s">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg"`; })()} autoplay muted loop playsinline aria-hidden="true"></video><i class="y30dim" aria-hidden="true"></i>
           <div class="y30m" aria-hidden="true"><div class="y30n">3<span class="z">0</span><i class="bl"></i></div></div>
           <div class="y30sub"><p>years of <span class="swap"><span>Precision<br>Artistry<br>Smiles</span></span></p></div>
           <div class="y30cap"><div class="in"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p></div></div></div></div>`,
@@ -914,11 +911,11 @@ const S1 = [
       { name: 'Four big numbers', d: 'A calm strip of facts. The 900+ review count comes from the site and needs a fresh check.',
         html: () => `<div class="sec"><div class="in"><div class="nums"><div><b>30</b><span>years of smiles in Austin</span></div><div><b>6</b><span>dentists at one practice</span></div><div><b>900+</b><span>Google reviews</span></div><div><b>3D</b><span>smile preview before you start</span></div></div></div></div>` },
       { name: 'A: Plain video card', d: 'Heading above, the video in a large rounded frame, no mask and no scroll effect.',
-        html: () => `<div class="sec"><div class="in"><div class="ya-h"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p></div><div class="ya-v">${(() => { const t = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'tall' : 'wide'; return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div>` },
+        html: () => `<div class="sec"><div class="in"><div class="ya-h"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p></div><div class="ya-v">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div>` },
       { name: 'B: Big 30 beside the video', d: 'A solid gold 30 with short facts on one side, the video in a frame on the other.',
-        html: () => `<div class="sec"><div class="in"><div class="yb"><div class="yb-t"><b class="yb-n">30</b><h2 class="hd">years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p><ul><li><b>4.9 ★</b> 800+ Google reviews</li><li><b>6</b> dentists at one practice</li></ul></div><div class="yb-v">${(() => { const t = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'tall' : 'wide'; return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div></div>` },
+        html: () => `<div class="sec"><div class="in"><div class="yb"><div class="yb-t"><b class="yb-n">30</b><h2 class="hd">years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p><ul><li><b>4.9 ★</b> 800+ Google reviews</li><li><b>6</b> dentists at one practice</li></ul></div><div class="yb-v">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div></div>` },
       { name: 'C: Full-screen video with text', d: 'The video fills the screen, a soft dark fade at the bottom, white heading on top.',
-        html: () => `<div class="yc">${(() => { const t = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'tall' : 'wide'; return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}<i class="yc-f" aria-hidden="true"></i><div class="in yc-t"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p></div></div>` },
+        html: () => `<div class="yc">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}<i class="yc-f" aria-hidden="true"></i><div class="in yc-t"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p></div></div>` },
     ],
   },
   {
@@ -1498,8 +1495,7 @@ document.addEventListener('click', e => { const a = e.target.closest('a[data-leg
   const close = () => { w.remove(); document.documentElement.classList.remove('poplock'); removeEventListener('keydown', esc); }, esc = ev => { if (ev.key === 'Escape') close(); };
   w.addEventListener('click', ev => { if (ev.target === w || ev.target.closest('button')) close(); }); addEventListener('keydown', esc);
   document.body.appendChild(w); document.documentElement.classList.add('poplock'); w.querySelector('button').focus(); });
-/* top bar glass once the page is scrolled */
-(function () { const f = () => { const n = document.querySelector('body.final .topnav'); if (n) { n.classList.toggle('scr', scrollY > 60); const l = n.querySelector('img'); if (l && innerWidth > 720 && !/logo-blue/.test(l.src)) l.src = l.src.replace('logo-white', 'logo-blue'); } }; addEventListener('scroll', f, { passive: true }); setTimeout(f, 500); })();
+
 
 /* Picker core: renders sections, switches options, saves picks to the artifact db */
 const SECTIONS = [...S1, ...S2, ...S3];
