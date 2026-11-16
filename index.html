@@ -497,7 +497,7 @@ body.final .flips[style]{grid-template-columns:repeat(auto-fit,minmax(150px,1fr)
 .y30m{position:absolute;inset:0;background:#fff;mix-blend-mode:screen;display:grid;place-items:center;will-change:transform,opacity}
 .y30n .bl{display:inline-block;width:0;height:0;vertical-align:baseline}.y30n{transform-origin:50% 55%}
 .y30n{font-family:var(--disp);font-weight:800;color:#000;font-size:min(64vw,74vh);letter-spacing:-.075em;line-height:.8;margin-top:-.16em;padding-right:.06em;white-space:nowrap}
-.y30sub{position:absolute;left:0;right:0;bottom:12vh;text-align:center;font-family:var(--disp);color:var(--ink);font-weight:500;font-size:clamp(28px,4.6vw,60px);letter-spacing:-.04em;line-height:1}
+.y30sub{position:absolute;left:0;right:0;top:calc(50% + min(64vw,74vh)*.34);will-change:transform,opacity;text-align:center;font-family:var(--disp);color:var(--ink);font-weight:500;font-size:clamp(28px,4.6vw,60px);letter-spacing:-.04em;line-height:1}
 .y30sub p{margin:0;display:inline-flex;gap:.28em;align-items:baseline}
 .y30sub .swap{display:inline-block;height:1.05em;overflow:hidden;vertical-align:bottom;text-align:left}
 .y30sub .swap span{display:block;transition:transform .42s cubic-bezier(.7,0,.2,1);line-height:1.05;font-family:var(--script);font-weight:600;font-size:1.18em;color:var(--goldD);letter-spacing:0}
@@ -509,7 +509,7 @@ body.final .flips[style]{grid-template-columns:repeat(auto-fit,minmax(150px,1fr)
 .y30cap p:not(.eb){max-width:46ch;color:#dfe8eb;font-size:17px;margin:14px 0 0}
 .y30cap .eb{color:var(--mist)}
 .y30.still{height:auto}.y30.still .y30s{position:relative;height:auto;min-height:80vh}.y30.still .y30m,.y30.still .y30sub,.y30.still .y30hint{display:none}.y30.still .y30cap{opacity:1;position:relative;padding-top:50vh}
-@media (max-width:640px){.y30{height:340vh}.y30n{font-size:min(74vw,60vh)}.y30sub{bottom:16vh;font-size:30px}.y30cap{padding-block:90px 7vh}.y30cap p:not(.eb){font-size:15.5px}}
+@media (max-width:640px){.y30{height:340vh}.y30n{font-size:min(74vw,60vh)}.y30sub{top:calc(50% + min(74vw,60vh)*.34);font-size:30px}.y30cap{padding-block:90px 7vh}.y30cap p:not(.eb){font-size:15.5px}}
 /* services: stacking on every screen, photo on top on phones, earlier cards shrink and dim */
 .pcard{transform:scale(var(--sc,1));transform-origin:50% 0;transition:transform .08s linear}
 .pcard{--pdim:0}.pcard::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#0c1114;opacity:var(--pdim);pointer-events:none}
@@ -849,7 +849,6 @@ const S1 = [
         html: () => `<div class="y30"><div class="y30s"><video src="${A}patient-smiles.mp4" autoplay muted loop playsinline aria-hidden="true"></video><i class="y30dim" aria-hidden="true"></i>
           <div class="y30m" aria-hidden="true"><div class="y30n">3<span class="z">0</span><i class="bl"></i></div></div>
           <div class="y30sub"><p>years of <span class="swap"><span>Precision<br>Artistry<br>Smiles</span></span></p></div>
-          <p class="y30hint" aria-hidden="true">Scroll</p>
           <div class="y30cap"><div class="in"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p></div></div></div></div>`,
         init: el => y30Init(el) },
       { name: 'Sentence that lights up as you scroll', d: 'Grey words turn dark while the section passes. Their own sentence from the site.',
@@ -1352,7 +1351,7 @@ function y30Init(el) {
     x.font = `800 ${fs}px "Inter Tight"`; x.textBaseline = 'alphabetic'; x.fillText('0', 0, fs); const mt = x.measureText('0'), asc = mt.actualBoundingBoxAscent || fs * .72;
     const row = Math.round(fs - asc / 2), d = x.getImageData(0, row, W, 1).data; let a = -1, b = -1; for (let i = 0; i < W; i++) { if (d[i * 4 + 3] > 128) { if (a < 0) a = i; b = i; } else if (a >= 0) break; }
     const sx = a >= 0 ? (a + b) / 2 : fs * .12; const zr = z.getBoundingClientRect(), mr = m.getBoundingClientRect(), base = n.querySelector('.bl').getBoundingClientRect().top;
-    m.style.transformOrigin = `${(zr.left - mr.left + sx).toFixed(1)}px ${(base - mr.top - asc / 2).toFixed(1)}px`; oset = true; };
+    const ox = zr.left + sx, oy = base - asc / 2; m.style.transformOrigin = `${(ox - mr.left).toFixed(1)}px ${(oy - mr.top).toFixed(1)}px`; sub.style.transform = 'none'; const sr = sub.getBoundingClientRect(); sub.style.transformOrigin = `${(ox - sr.left).toFixed(1)}px ${(oy - sr.top).toFixed(1)}px`; oset = true; /* "years of" zooms from the same point as the 30 */ };
   const tick = () => { raf = 0; if (!document.body.contains(sec)) return removeEventListener('scroll', on);
     const r = sec.getBoundingClientRect(), span = r.height - innerHeight, p = clamp01(-r.top / span);
     const intro = clamp01(p / .12), zt = clamp01((p - .36) / .34), fade = clamp01((p - .64) / .1), capP = clamp01((p - .72) / .14);
@@ -1360,7 +1359,7 @@ function y30Init(el) {
     if (zt === 0 || !oset) origin();
     const s = zt > 0 ? Math.exp(Math.log(70) * ease(zt)) : 1;
     m.style.transform = `scale(${s.toFixed(4)})`; m.style.opacity = (1 - fade).toFixed(3);
-    sub.style.opacity = (1 - clamp01((p - .31) / .06)).toFixed(3); sub.style.transform = `translateY(${(-24 * clamp01((p - .31) / .06)).toFixed(1)}px)`;
+    sub.style.opacity = (1 - fade).toFixed(3); sub.style.transform = `scale(${s.toFixed(4)})`;
     const w = p < .08 ? 0 : p < .18 ? 1 : 2; if (w !== k) { k = w; sw.style.transform = `translateY(${-w * 33.333}%)`; }
     cap.style.opacity = capP.toFixed(3); cap.style.transform = `translateY(${(1 - ease(capP)) * 30}px)`;
     v.style.transform = `scale(${(1.12 - .12 * ease(clamp01((p - .4) / .5))).toFixed(4)})`;
