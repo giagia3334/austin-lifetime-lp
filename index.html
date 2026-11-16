@@ -1519,7 +1519,7 @@ function save() {
   clearTimeout(saveT); $('#sync').textContent = 'Saving…';
   saveT = setTimeout(async () => { ST.updated = new Date().toISOString(); try { await ref.set(JSON.parse(JSON.stringify(ST))); $('#sync').textContent = '☁️ Synced to Claude'; } catch (e) { $('#sync').textContent = 'Not synced, saved on this device'; } }, 700);
 }
-ST.tone='c'; ST.picks={"nav": 2, "hero": 1, "offer1": 1, "offer2": 1, "years": 1, "services": 2, "designer": 1, "process": 1, "results": 3, "tech": 1, "team": 1, "cost": 2, "reviews": 2, "visit": 1, "faq": 3, "form": 1}; const FINAL=true; { const _y = (location.hash + location.search).match(/y30=([1-6])/); if (_y) ST.picks.years = +_y[1]; }
+ST.tone='c'; ST.picks={"nav": 2, "hero": 1, "offer1": 1, "offer2": 1, "years": 6, "services": 2, "designer": 1, "process": 1, "results": 3, "tech": 1, "team": 1, "cost": 2, "reviews": 2, "visit": 1, "faq": 3, "form": 1}; const FINAL=true; { const _y = (location.hash + location.search).match(/y30=([1-6])/); if (_y) ST.picks.years = +_y[1]; }
 build(); document.body.classList.add('preview','final'); document.querySelector('.top').hidden=true; revealInit(); fabInit(); (function(){var n=document.getElementById('intro');if(!n)return;document.body.classList.add('introing');var done=function(){document.body.classList.remove('introing');if(n.parentNode)n.remove();};n.addEventListener('click',function(){n.style.animation='introFade .35s ease forwards';setTimeout(done,370);});setTimeout(done,3500);})(); popupInit(/[?&#]popup-test/.test(location.href) ? 1500 : 60000, /[?&#]popup-test/.test(location.href));
 (async () => {
   let db = null; try { db = window.claude ? await window.claude.use('db') : null; } catch (e) {}
