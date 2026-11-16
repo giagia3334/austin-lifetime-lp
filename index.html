@@ -715,19 +715,19 @@ html.poplock,html.poplock body{overflow:hidden}
 .oq{margin:22px 0 0;padding-left:16px;border-left:2px solid var(--goldD);font-family:var(--disp);font-weight:500;font-size:clamp(19px,2vw,23px);line-height:1.3;letter-spacing:-.015em;color:var(--ink);max-width:34ch}
 .pq{margin:12px 0 0;font-size:14px;line-height:1.45;color:#c3d0d6;font-style:italic}
 .oq2{margin:0;font-family:var(--disp);font-size:18px;line-height:1.35;color:#dfe8eb;max-width:36ch}
-/* opening: logo, then "30 years of serving Austin", then the panel lifts like a curtain */
-#intro{position:fixed;inset:0;z-index:200;background:var(--night);display:grid;place-items:center;color:#fff;animation:introLift .9s cubic-bezier(.76,0,.24,1) 2.5s forwards}
-#intro .ib{display:grid;justify-items:center;gap:20px;text-align:center;padding:0 24px}
-#intro img{width:min(230px,56vw);height:auto;opacity:0;animation:introIn 1s cubic-bezier(.16,1,.3,1) .15s forwards}
-#intro p{margin:0;font-family:var(--disp);font-weight:500;font-size:clamp(22px,3.4vw,34px);letter-spacing:-.02em;overflow:hidden}
-#intro p span{display:inline-block;transform:translateY(110%);animation:introUp .9s cubic-bezier(.16,1,.3,1) forwards}
+/* opening: logo, then it fades away and "30 years of serving Austin" arrives as one piece, then the dark panel fades out */
+#intro{position:fixed;inset:0;z-index:200;background:var(--night);display:grid;place-items:center;color:#fff;animation:introFade .45s ease 3.3s forwards}
+#intro .ib{display:grid;place-items:center;text-align:center;padding:0 24px}
+#intro .ib>*{grid-area:1/1}
+#intro img{width:min(230px,56vw);height:auto;opacity:0;animation:introIn .85s cubic-bezier(.16,1,.3,1) .15s forwards,introOut .4s ease 1.45s forwards}
+#intro .it{display:grid;justify-items:center;gap:18px;opacity:0;animation:introIn .8s cubic-bezier(.16,1,.3,1) 1.85s forwards}
+#intro p{margin:0;font-family:var(--disp);font-weight:500;font-size:clamp(24px,3.6vw,38px);letter-spacing:-.02em}
 #intro p em{font-style:normal;color:var(--gold)}
-#intro i{display:block;width:0;height:2px;background:var(--gold);border-radius:2px;animation:introLine 1s cubic-bezier(.65,0,.35,1) 1.2s forwards}
+#intro i{display:block;width:0;height:2px;background:var(--gold);border-radius:2px;animation:introLine .9s cubic-bezier(.65,0,.35,1) 2.25s forwards}
 @keyframes introIn{from{opacity:0;transform:scale(.94) translateY(8px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
-@keyframes introUp{to{transform:none}}
+@keyframes introOut{from{opacity:1}to{opacity:0;transform:scale(1.03);filter:blur(4px)}}
 @keyframes introLine{to{width:64px}}
-@keyframes introLift{to{clip-path:inset(0 0 100% 0);visibility:hidden}}
-#intro{clip-path:inset(0 0 0 0)}
+@keyframes introFade{to{opacity:0;visibility:hidden}}
 body.introing{overflow:hidden}
 .hero1>img.cover{animation-delay:2.6s}.hero1 .hd{animation-delay:2.8s}.hero1 .in>div{animation-delay:3s}
 @media (prefers-reduced-motion:reduce){#intro{display:none}}
@@ -750,7 +750,7 @@ body.introing{overflow:hidden}
 .ccx p:not(.eb){margin:0;color:var(--mute)}
 @media (max-width:640px){.cc2{grid-template-columns:1fr}.ccp{min-height:0;aspect-ratio:4/3}.ccx{padding:20px}}
 </style>
-<div id="app"></div><div id="intro" aria-hidden="true"><div class="ib"><img src="a/logo-white.png" alt=""><p><span style="animation-delay:0.75s">30</span> <span style="animation-delay:0.82s">years</span> <span style="animation-delay:0.89s">of</span> <span style="animation-delay:0.96s">serving</span> <span style="animation-delay:1.03s"><em>Austin</em></span></p><i></i></div></div>
+<div id="app"></div><div id="intro" aria-hidden="true"><div class="ib"><img src="a/logo-white.png" alt=""><div class="it"><p>30 years of serving <em>Austin</em></p><i></i></div></div></div>
 <div class="fab"><a class="bk" href="#pk-form" aria-label="Book a consult"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a><a class="tl3" href="tel:5128351924" aria-label="Call (512) 835-1924"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
 <script>
 /* Section data, part 1: navigation, hero, 30 years, services */
@@ -1482,7 +1482,7 @@ function save() {
   saveT = setTimeout(async () => { ST.updated = new Date().toISOString(); try { await ref.set(JSON.parse(JSON.stringify(ST))); $('#sync').textContent = '☁️ Synced to Claude'; } catch (e) { $('#sync').textContent = 'Not synced, saved on this device'; } }, 700);
 }
 ST.tone='c'; ST.picks={"nav": 2, "hero": 1, "offer1": 1, "offer2": 1, "years": 1, "services": 2, "designer": 1, "process": 1, "results": 3, "tech": 1, "team": 1, "cost": 2, "reviews": 2, "visit": 1, "faq": 3, "form": 1}; const FINAL=true;
-build(); document.body.classList.add('preview','final'); document.querySelector('.top').hidden=true; revealInit(); fabInit(); (function(){var n=document.getElementById('intro');if(!n)return;document.body.classList.add('introing');var done=function(){document.body.classList.remove('introing');if(n.parentNode)n.remove();};n.addEventListener('click',function(){n.style.animation='introLift .5s cubic-bezier(.76,0,.24,1) forwards';setTimeout(done,520);});setTimeout(done,3500);})(); popupInit(/[?&#]popup-test/.test(location.href) ? 1500 : 60000, /[?&#]popup-test/.test(location.href));
+build(); document.body.classList.add('preview','final'); document.querySelector('.top').hidden=true; revealInit(); fabInit(); (function(){var n=document.getElementById('intro');if(!n)return;document.body.classList.add('introing');var done=function(){document.body.classList.remove('introing');if(n.parentNode)n.remove();};n.addEventListener('click',function(){n.style.animation='introFade .35s ease forwards';setTimeout(done,370);});setTimeout(done,3850);})(); popupInit(/[?&#]popup-test/.test(location.href) ? 1500 : 60000, /[?&#]popup-test/.test(location.href));
 (async () => {
   let db = null; try { db = window.claude ? await window.claude.use('db') : null; } catch (e) {}
   if (!db) { $('#sync').textContent = 'Saved on this device only'; return; }
