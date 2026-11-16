@@ -590,7 +590,7 @@ body.final .flips[style]{grid-template-columns:repeat(auto-fit,minmax(150px,1fr)
   .acc3 .pn:not(.map) .cap span:last-child{font-size:12px}
 }
 /* offer pop-up */
-.pop{position:fixed;inset:0;z-index:90;background:rgba(12,17,20,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;padding:20px;opacity:0;transition:opacity .3s}
+.pop{position:fixed;inset:0;z-index:90;background:rgba(12,17,20,.55);display:grid;place-items:center;padding:20px;opacity:0;transition:opacity .3s}
 .pop.on{opacity:1}
 .pbox{position:relative;width:min(460px,100%);max-height:calc(100vh - 40px);overflow:auto;background:var(--card);border-radius:24px;outline:none;transform:translateY(24px) scale(.98);transition:transform .45s cubic-bezier(.16,1,.3,1)}
 .pop.on .pbox{transform:none}
@@ -757,6 +757,22 @@ body.introing{overflow:hidden}
 .grate b{font-weight:400;color:inherit}
 .grate .gst{color:#fbbc04;letter-spacing:1px;font-size:1.1em}
 .grate:hover span:last-child{text-decoration:underline}
+
+/* 30-years section alternatives A/B/C */
+.ya-h{max-width:760px;margin-bottom:28px}.ya-h p:not(.eb){color:var(--mute);font-size:17px;max-width:560px}
+.ya-v,.yb-v{border-radius:24px;overflow:hidden;background:#111;aspect-ratio:16/9}
+.ya-v video,.yb-v video,.yc video{width:100%;height:100%;object-fit:cover;display:block}
+.yb{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center}
+.yb-n{display:block;font-family:var(--disp);font-weight:800;font-size:clamp(120px,16vw,220px);line-height:.8;letter-spacing:-.07em;color:var(--gold)}
+.yb-t .hd{margin-top:14px}.yb-t p{color:var(--mute);font-size:17px}
+.yb-t ul{list-style:none;padding:0;margin:22px 0 0;display:flex;gap:28px}.yb-t li{font-size:14px;color:var(--mute)}.yb-t li b{display:block;font-size:24px;color:var(--ink);font-family:var(--disp)}
+.yc{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#111}
+.yc video{position:absolute;inset:0}
+.yc-f{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,17,.85),rgba(10,14,17,.2) 55%,rgba(10,14,17,0))}
+.yc-t{position:absolute;left:0;right:0;bottom:8vh;color:#fff}.yc-t .eb{color:rgba(255,255,255,.7)}.yc-t .hd{color:#fff}.yc-t .hd em{color:var(--gold)}.yc-t p:not(.eb){color:rgba(255,255,255,.85);max-width:520px;font-size:17px}
+@media (max-width:767px){.ya-v,.yb-v{aspect-ratio:4/5}.yb{grid-template-columns:1fr;gap:26px}}
+/* closing form on computers: offer panel on the left, form on the right */
+@media (min-width:900px){.fbox{width:min(1080px,100%);display:grid;grid-template-columns:1fr 1.15fr;grid-template-rows:1fr auto}.fbox>.ptop{grid-row:1/3;display:flex;flex-direction:column;justify-content:center;padding:52px 48px}.fbox>.ptop h3{font-size:clamp(34px,3.4vw,46px)}.fbox>.form{padding:40px 44px 8px}.fbox>.fcall{padding:4px 44px 36px}}
 </style>
 <div id="app"></div><div id="intro" aria-hidden="true"><div class="ib"><div class="it"><p><span style="animation-delay:0.200s">3</span><span style="animation-delay:0.234s">0</span><span style="animation-delay:0.268s">&nbsp;</span><span style="animation-delay:0.302s">y</span><span style="animation-delay:0.336s">e</span><span style="animation-delay:0.370s">a</span><span style="animation-delay:0.404s">r</span><span style="animation-delay:0.438s">s</span><span style="animation-delay:0.472s">&nbsp;</span><span style="animation-delay:0.506s">o</span><span style="animation-delay:0.540s">f</span><span style="animation-delay:0.574s">&nbsp;</span><span style="animation-delay:0.608s">s</span><span style="animation-delay:0.642s">e</span><span style="animation-delay:0.676s">r</span><span style="animation-delay:0.710s">v</span><span style="animation-delay:0.744s">i</span><span style="animation-delay:0.778s">n</span><span style="animation-delay:0.812s">g</span><span style="animation-delay:0.846s">&nbsp;</span><em><span style="animation-delay:0.880s">A</span><span style="animation-delay:0.914s">u</span><span style="animation-delay:0.948s">s</span><span style="animation-delay:0.982s">t</span><span style="animation-delay:1.016s">i</span><span style="animation-delay:1.050s">n</span></em></p><i></i></div><img src="a/logo-white.png" alt=""></div></div>
 <div class="fab"><a class="bk" href="#pk-form" aria-label="Book a consult"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a><a class="tl3" href="tel:5128351924" aria-label="Call (512) 835-1924"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
@@ -856,6 +872,12 @@ const S1 = [
         init: el => { const ws = [...el.querySelectorAll('.big span')]; const f = () => { if (!document.body.contains(el)) return removeEventListener('scroll', f); const r = el.getBoundingClientRect(); const p = Math.min(1, Math.max(0, (innerHeight * .85 - r.top) / (r.height + innerHeight * .25))); ws.forEach((w, i) => w.classList.toggle('on', i / ws.length < p * 1.25)); }; addEventListener('scroll', f, { passive: true }); f(); } },
       { name: 'Four big numbers', d: 'A calm strip of facts. The 900+ review count comes from the site and needs a fresh check.',
         html: () => `<div class="sec"><div class="in"><div class="nums"><div><b>30</b><span>years of smiles in Austin</span></div><div><b>6</b><span>dentists at one practice</span></div><div><b>900+</b><span>Google reviews</span></div><div><b>3D</b><span>smile preview before you start</span></div></div></div></div>` },
+      { name: 'A: Plain video card', d: 'Heading above, the video in a large rounded frame, no mask and no scroll effect.',
+        html: () => `<div class="sec"><div class="in"><div class="ya-h"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p></div><div class="ya-v">${(() => { const t = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'tall' : 'wide'; return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div>` },
+      { name: 'B: Big 30 beside the video', d: 'A solid gold 30 with short facts on one side, the video in a frame on the other.',
+        html: () => `<div class="sec"><div class="in"><div class="yb"><div class="yb-t"><b class="yb-n">30</b><h2 class="hd">years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p><ul><li><b>4.9 ★</b> 800+ Google reviews</li><li><b>6</b> dentists at one practice</li></ul></div><div class="yb-v">${(() => { const t = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'tall' : 'wide'; return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div></div>` },
+      { name: 'C: Full-screen video with text', d: 'The video fills the screen, a soft dark fade at the bottom, white heading on top.',
+        html: () => `<div class="yc">${(() => { const t = matchMedia('(max-aspect-ratio: 1/1)').matches ? 'tall' : 'wide'; return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}<i class="yc-f" aria-hidden="true"></i><div class="in yc-t"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle most of your dental care right here, with doctors you know and trust.</p></div></div>` },
     ],
   },
   {
@@ -1419,6 +1441,15 @@ function fabInit() {
   ['#pk-hero', '#pk-form'].forEach(s => { const e = document.querySelector(s); if (e) io.observe(e); });
 }
 
+/* drag to scroll: any sideways-scrolling row can also be dragged with the mouse */
+(function () {
+  let el = null, sx = 0, sl = 0, moved = 0, snap = '';
+  const scroller = t => { for (let n = t; n && n !== document.body; n = n.parentElement) { if (n.scrollWidth > n.clientWidth + 2) { const o = getComputedStyle(n).overflowX; if (o === 'auto' || o === 'scroll') return n; } } return null; };
+  addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('input,select,textarea,video[controls]')) return; el = scroller(e.target); if (!el) return; sx = e.clientX; sl = el.scrollLeft; moved = 0; snap = el.style.scrollSnapType; });
+  addEventListener('pointermove', e => { if (!el) return; const dx = e.clientX - sx; if (!moved && Math.abs(dx) < 5) return; if (!moved) { el.style.scrollSnapType = 'none'; el.style.scrollBehavior = 'auto'; document.body.style.userSelect = 'none'; el.style.cursor = 'grabbing'; } moved = 1; el.scrollLeft = sl - dx; });
+  addEventListener('pointerup', () => { if (!el) return; const t = el; el = null; document.body.style.userSelect = ''; t.style.cursor = ''; if (moved) { addEventListener('click', ev => { ev.preventDefault(); ev.stopPropagation(); }, { capture: true, once: true }); const x = t.scrollLeft; t.style.scrollSnapType = snap; t.style.scrollBehavior = ''; t.scrollLeft = x; setTimeout(() => removeEventListener('click', () => {}), 0); } });
+})();
+
 /* Picker core: renders sections, switches options, saves picks to the artifact db */
 const SECTIONS = [...S1, ...S2, ...S3];
 SECTIONS.forEach(s => { s.v = s.v.filter(v => !v.hide); });
@@ -1488,7 +1519,7 @@ function save() {
   clearTimeout(saveT); $('#sync').textContent = 'Saving…';
   saveT = setTimeout(async () => { ST.updated = new Date().toISOString(); try { await ref.set(JSON.parse(JSON.stringify(ST))); $('#sync').textContent = '☁️ Synced to Claude'; } catch (e) { $('#sync').textContent = 'Not synced, saved on this device'; } }, 700);
 }
-ST.tone='c'; ST.picks={"nav": 2, "hero": 1, "offer1": 1, "offer2": 1, "years": 1, "services": 2, "designer": 1, "process": 1, "results": 3, "tech": 1, "team": 1, "cost": 2, "reviews": 2, "visit": 1, "faq": 3, "form": 1}; const FINAL=true;
+ST.tone='c'; ST.picks={"nav": 2, "hero": 1, "offer1": 1, "offer2": 1, "years": 1, "services": 2, "designer": 1, "process": 1, "results": 3, "tech": 1, "team": 1, "cost": 2, "reviews": 2, "visit": 1, "faq": 3, "form": 1}; const FINAL=true; { const _y = (location.hash + location.search).match(/y30=([1-6])/); if (_y) ST.picks.years = +_y[1]; }
 build(); document.body.classList.add('preview','final'); document.querySelector('.top').hidden=true; revealInit(); fabInit(); (function(){var n=document.getElementById('intro');if(!n)return;document.body.classList.add('introing');var done=function(){document.body.classList.remove('introing');if(n.parentNode)n.remove();};n.addEventListener('click',function(){n.style.animation='introFade .35s ease forwards';setTimeout(done,370);});setTimeout(done,3500);})(); popupInit(/[?&#]popup-test/.test(location.href) ? 1500 : 60000, /[?&#]popup-test/.test(location.href));
 (async () => {
   let db = null; try { db = window.claude ? await window.claude.use('db') : null; } catch (e) {}
