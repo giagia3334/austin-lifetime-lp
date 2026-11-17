@@ -827,6 +827,48 @@ body.introing{overflow:hidden}
 .pmini h3{font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:-.01em;margin:0 0 6px}
 .pmini p{margin:0 auto;color:var(--mute);font-size:14.5px;max-width:30ch}
 @media(max-width:760px){.pmini{grid-template-columns:1fr 1fr;row-gap:28px}.pmini:before{display:none}}
+
+/* round 6: dot-drawn process (dots.js) */
+.dq1,.dq4{list-style:none;margin:0;padding:0;display:grid;gap:clamp(18px,2.6vw,36px)}
+.dq1{grid-template-columns:repeat(4,1fr)}
+.dq1 li{text-align:center}
+.dq1 canvas{display:block;width:100%;aspect-ratio:1;max-width:220px;margin:0 auto 10px;touch-action:pan-y}
+.dq1 .k,.dq2 .k,.dq3 .k,.dq4 .k,.dq5 .k{display:block;font:500 12px/1.2 var(--mono,monospace);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.dq1 h3,.dq3 h3,.dq4 h3{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.01em;margin:0 0 6px}
+.dq1 p,.dq3 p,.dq4 p{margin:0 auto;color:var(--mute);font-size:14.5px;max-width:32ch}
+@media(max-width:760px){.dq1{grid-template-columns:1fr 1fr;row-gap:30px}.dq1 canvas{max-width:170px}}
+.dq2w{height:400vh;position:relative}
+.dq2{position:sticky;top:0;height:100vh;display:flex;align-items:center;background:var(--bg,#fff)}
+.dq2 .in{width:100%}
+.dq2g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,60px);align-items:center}
+.dq2 canvas{width:100%;aspect-ratio:1;max-height:72vh;display:block;touch-action:pan-y}
+.dq2s{position:relative;min-height:190px;margin-top:22px}
+.dq2s .it{position:absolute;inset:0;opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s}
+.dq2s .it.on{opacity:1;transform:none}
+.dq2s h3{font-family:var(--disp);font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.015em;margin:0 0 8px}
+.dq2s p{margin:0;color:var(--mute);max-width:40ch}
+.dq2p{display:flex;gap:8px;margin-top:8px}.dq2p i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .3s}.dq2p i.on{background:var(--gold)}
+@media(max-width:760px){.dq2g{grid-template-columns:1fr;gap:6px}.dq2 canvas{order:-1;max-height:40vh;width:auto;margin:0 auto}.dq2s{min-height:200px;margin-top:6px}.dq2 .eyb,.dq2 h2{font-size:28px}}
+.dq3{position:relative}
+.dq3 canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+.dq3 ol{list-style:none;margin:0;padding:clamp(170px,22vw,230px) 0 10px;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2.4vw,32px);position:relative;pointer-events:none}
+.dq3 li{text-align:center;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}.dq3 li.on{opacity:1;transform:none}
+@media(max-width:700px){.dq3{min-height:1150px}.dq3 ol{display:block;padding:0}.dq3 li{position:absolute;left:0;right:0;top:var(--y);background:color-mix(in srgb,var(--bg,#fff) 82%,transparent);padding:6px 0}}
+.dq4{grid-template-columns:1fr 1fr}
+.dq4 li{display:grid;grid-template-columns:clamp(110px,14vw,170px) 1fr;gap:18px;align-items:center}
+.dq4 canvas{width:100%;aspect-ratio:1;display:block;touch-action:pan-y}
+.dq4 p{margin:0}
+@media(max-width:760px){.dq4{grid-template-columns:1fr;gap:22px}.dq4 li{grid-template-columns:110px 1fr}}
+.dq5w{height:420vh;position:relative;background:#1f2b31}
+.dq5{position:sticky;top:0;height:100vh;overflow:hidden;color:#fff;background:radial-gradient(120% 90% at 70% 50%,#2B3A42,#1a2429)}
+.dq5 canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+.dq5 .in{position:relative;height:100%;display:flex;align-items:center;pointer-events:none}
+.dq5t{position:relative;width:min(44%,460px);min-height:240px}
+.dq5 .ey{display:block;font:500 12px var(--mono,monospace);letter-spacing:.14em;text-transform:uppercase;color:#8AA2AE;margin-bottom:18px}
+.dq5 .it{position:absolute;left:0;right:0;top:36px;opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}.dq5 .it.on{opacity:1;transform:none}
+.dq5 h3{font-family:var(--disp);font-weight:600;font-size:clamp(26px,3vw,40px);letter-spacing:-.02em;margin:0 0 10px;color:#fff}
+.dq5 p{margin:0;color:#BDD4DE;max-width:40ch}
+@media(max-width:760px){.dq5 .in{align-items:flex-end;padding-bottom:9vh}.dq5t{width:100%;min-height:210px}}
 </style>
 <div id="app"></div><footer class="lf"><div class="in"><span>© 2026 Austin Lifetime Dental LLLP · 2206 W Parmer Ln, Austin, TX 78727</span><span class="lfl"><a href="https://www.lifetimedental.com/privacy-policy/" data-legal="Privacy Policy">Privacy Policy</a><a href="https://www.lifetimedental.com/terms-of-use-terms-of-service/" data-legal="Terms of Use">Terms of Use</a></span></div></footer><div id="intro" aria-hidden="true"><div class="ib"><img src="a/logo-white.png" alt=""><p>30 years of serving <em>Austin</em></p></div></div>
 <div class="fab"><a class="bk" href="#pk-form" aria-label="Book a consult"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a><a class="tl3" href="tel:5128351924" aria-label="Call (512) 835-1924"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
@@ -878,8 +920,7 @@ const S1 = [
         init: el => el.querySelectorAll('.pillnav button:not(.book)').forEach(b => b.addEventListener('click', () => { el.querySelectorAll('.pillnav button').forEach(x => x.setAttribute('aria-current', 'false')); b.setAttribute('aria-current', 'true'); })) },
       { name: 'Top bar with a pill', d: 'Logo left, links in one soft pill, gold button right. Links hide on phones; the button stays.',
         html: () => `<div class="navdemo">${img('hero-cosmetic.webp')}<div class="topnav"><img src="${A}logo-white.png" alt="Austin Lifetime Dental">
-          <div class="links"><a class="on" href="#pk-services">Services</a><a href="#pk-results">Results</a><a href="#pk-team">Team</a><a href="#pk-visit">Visit</a></div>
-          <a class="btn b-gold" href="#pk-form" style="padding:11px 18px">Book a consult</a></div></div>` },
+</div></div>` },
       { name: 'Quiet text bar', d: 'Plain bar on the page colour with small capital links. The calmest one.',
         html: () => `<div class="navdemo" style="height:230px">${img('hero-cosmetic.webp', '', 'cover', 'style="top:66px;height:calc(100% - 66px)"')}<div class="textnav"><img src="${A}logo-blue.png" alt="Austin Lifetime Dental">
           <div class="links"><a href="#pk-services">Services</a><a href="#pk-results">Results</a><a href="#pk-team">Team</a><a href="#pk-visit">Visit</a></div>
@@ -916,9 +957,9 @@ const S1 = [
     id: 'services', name: 'Services', ref: 'IGOR · OperatorX · Monoform',
     v: [
       { name: 'Stacking cards with big numbers', d: 'The “How it works” card style you liked, used for services: four cards pile up as you scroll.',
-        html: () => `<div class="sec deep"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard" style="top:${76 + i * 16}px"><div class="num">0${i + 1}</div><div class="tx"><div class="lab"><span>${c[3]}</span><span>${c[2].length} treatments</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div></article>`).join('')}</div></div></div>` },
+        html: () => `<div class="sec deep"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard" style="top:${76 + i * 16}px"><div class="num">0${i + 1}</div><div class="tx"><div class="lab"><span>${c[3]}</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div></article>`).join('')}</div></div></div>` },
       { name: 'Same cards with a photo', d: 'Text on the left, the photo fills the whole right half; both halves move as one card.',
-        html: () => `<div class="sec tint"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard ph2" style="top:${76 + i * 16}px;--i:${i}"><div class="tx"><div class="lab"><span>0${i + 1} · ${c[3]}</span><span>${c[2].length} treatments</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div><div class="pp">${img(c[4], c[0])}</div></article>`).join('')}</div></div></div>`,
+        html: () => `<div class="sec tint"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard ph2" style="top:${76 + i * 16}px;--i:${i}"><div class="tx"><div class="lab"><span>0${i + 1} · ${c[3]}</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div><div class="pp">${img(c[4], c[0])}</div></article>`).join('')}</div></div></div>`,
         init: el => stackInit(el) },
       { name: 'Square photo tiles (IGOR)', d: 'The style you pointed at: square photos, a plain capital label under each.',
         html: () => `<div class="sec"><div class="in">${head('', 'Services', '')}<div class="tiles">${SERVICES.map(s => `<a class="tile" href="#pk-form"><div class="ph">${img(s.f, s.t)}</div><h3>${s.t}</h3><p>${s.d}</p></a>`).join('')}</div></div></div>` },
@@ -1387,6 +1428,178 @@ const S3 = [
   },
 ];
 
+/* Process section, round 6: the four veneer steps drawn in fine dots (Luca's dot language), built step by step,
+   dots scatter away from the mouse or a finger and drift back. Five directions, added as process options 5-9.
+   Without canvas, or with reduced motion, the dots settle instantly and the text reads on its own. */
+const DOT = { ink: '#2B3A42', gold: '#D4A333', mist: '#8AA2AE', paper: '#fff' };
+const DRM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const TOOTH = new Path2D('M12 3c-3 0-5 1.6-5 4.5 0 2 .6 3.5 1 6 .4 2.6.8 6.5 2.2 6.5 1.3 0 1.2-4 1.8-4s.5 4 1.8 4c1.4 0 1.8-3.9 2.2-6.5.4-2.5 1-4 1-6C17 4.6 15 3 12 3z');
+const STEP_T = ['Scan and digital design', 'Gentle preparation', 'Try your temporaries', 'Bond and reveal'];
+
+/* each scene draws into a 100x100 box; gold strokes become gold dots */
+function sceneDraw(o, i, ink, gold) {
+  o.lineCap = 'round'; o.lineJoin = 'round';
+  const tooth = (x, y, s, col, lw) => { o.save(); o.translate(x, y); o.scale(s, s); o.strokeStyle = col; o.lineWidth = lw / s; o.stroke(TOOTH); o.restore(); };
+  const star = (x, y, r) => { o.beginPath(); o.moveTo(x, y - r); o.quadraticCurveTo(x, y, x + r, y); o.quadraticCurveTo(x, y, x, y + r); o.quadraticCurveTo(x, y, x - r, y); o.quadraticCurveTo(x, y, x, y - r); o.fillStyle = gold; o.fill(); };
+  if (i === 0) { // scanner screen with a smile arc
+    o.strokeStyle = ink; o.lineWidth = 3.4; o.beginPath(); o.roundRect(14, 18, 72, 50, 6); o.stroke();
+    o.beginPath(); o.moveTo(40, 82); o.lineTo(60, 82); o.moveTo(50, 68); o.lineTo(50, 82); o.stroke();
+    o.strokeStyle = gold; o.lineWidth = 3.2; o.beginPath(); o.moveTo(28, 38); o.quadraticCurveTo(50, 60, 72, 38); o.stroke();
+    o.lineWidth = 2; for (let k = 0; k < 6; k++) { const x = 33 + k * 7; o.beginPath(); o.moveTo(x, 40 + Math.sin((k + .5) / 6 * Math.PI) * 6); o.lineTo(x, 46 + Math.sin((k + .5) / 6 * Math.PI) * 6); o.stroke(); }
+  } else if (i === 1) { // tooth with a thin veneer shell in gold
+    tooth(14, 8, 3.1, ink, 3.4);
+    o.strokeStyle = gold; o.lineWidth = 3; o.beginPath(); o.moveTo(31, 22); o.quadraticCurveTo(50, 10, 69, 22); o.stroke();
+    o.setLineDash([1, 5]); o.lineWidth = 2; o.beginPath(); o.moveTo(26, 30); o.quadraticCurveTo(50, 16, 74, 30); o.stroke(); o.setLineDash([]);
+  } else if (i === 2) { // hand mirror with a smile
+    o.strokeStyle = ink; o.lineWidth = 3.4; o.beginPath(); o.ellipse(46, 38, 25, 27, -.15, 0, 7); o.stroke();
+    o.beginPath(); o.moveTo(58, 62); o.lineTo(74, 88); o.stroke();
+    o.strokeStyle = gold; o.lineWidth = 3; o.beginPath(); o.moveTo(34, 40); o.quadraticCurveTo(46, 52, 58, 38); o.stroke();
+  } else { // finished tooth with sparkles
+    tooth(18, 10, 2.8, ink, 3.4);
+    star(78, 22, 8); star(88, 42, 4.5); star(22, 70, 5);
+  }
+}
+function numeralDraw(o, i, ink) { o.fillStyle = ink; o.font = '300 72px Urbanist, Inter Tight, Arial'; o.textAlign = 'center'; o.textBaseline = 'middle'; o.fillText('0' + (i + 1), 50, 54); }
+
+/* sample a 100x100 drawing into dot targets inside a w x h rect at (ox, oy) */
+function sampleScene(draw, ox, oy, size, gap) {
+  const S = Math.max(40, Math.round(size)), c = document.createElement('canvas'); c.width = c.height = S;
+  const o = c.getContext('2d', { willReadFrequently: true }); o.scale(S / 100, S / 100);
+  draw(o, DOT.ink, DOT.gold);
+  const d = o.getImageData(0, 0, S, S).data, out = [];
+  for (let y = 0; y < S; y += gap) for (let x = 0; x < S; x += gap) {
+    const k = (y * S + x) * 4; if (d[k + 3] > 110) out.push({ x: ox + x, y: oy + y, c: d[k] > 150 ? DOT.gold : DOT.ink });
+  }
+  return out;
+}
+
+/* the engine: one canvas, a pool of dots with springs, a pointer that pushes them away */
+function DotStage(cv, opt = {}) {
+  const ctx = cv.getContext('2d'); if (!ctx) return null;
+  let W = 0, H = 0, dpr = 1, P = [], mx = -1e4, my = -1e4, raf = 0, alive = true, idle = 0;
+  const S = { cv, P: () => P, W: () => W, H: () => H };
+  const size = () => { dpr = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); };
+  size();
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  /* targets: [{x,y,c}] ; from: 'scatter' | 'left' | 'keep' ; delay spread in ms by reading order */
+  S.set = (T, from = 'scatter', spread = 900, order = 'x') => {
+    const now = performance.now();
+    while (P.length < T.length) P.push({ x: rnd(0, W), y: rnd(0, H), vx: 0, vy: 0, tx: 0, ty: 0, c: DOT.ink, a: 0, ta: 0, t0: 0, sz: 1 });
+    const mxo = order === 'x' ? W : H;
+    P.forEach((p, i) => {
+      const t = T[i];
+      if (t) {
+        if (from === 'scatter' && p.a === 0) { p.x = rnd(-W * .1, W * 1.1); p.y = rnd(-H * .2, H * 1.2); }
+        if (from === 'left' && p.a === 0) { p.x = -rnd(10, W * .5); p.y = t.y + rnd(-H * .15, H * .15); }
+        p.tx = t.x; p.ty = t.y; p.tc = t.c; p.ta = 1;
+        p.t0 = now + ((order === 'x' ? t.x : t.y) / mxo) * spread + rnd(0, spread * .35);
+      } else { p.ta = 0; p.t0 = now + rnd(0, 300); p.tx = from === 'left' ? W + rnd(20, 200) : p.x + rnd(-80, 80); p.ty = p.y + rnd(-60, 60); }
+    });
+    if (DRM) P.forEach(p => { p.x = p.tx; p.y = p.ty; p.a = p.ta; p.c = p.tc || p.c; });
+    kick();
+  };
+  S.clear = () => S.set([]);
+  const step = (now) => {
+    raf = 0; if (!alive) return;
+    if (!document.body.contains(cv)) { alive = false; return; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    let moving = 0; const R = opt.repel || 70, R2 = R * R, dot = opt.dot || 1.7;
+    for (const p of P) {
+      const live = now >= p.t0;
+      if (live) {
+        const k = .055, dm = .8;
+        p.vx = (p.vx + (p.tx - p.x) * k) * dm; p.vy = (p.vy + (p.ty - p.y) * k) * dm;
+        p.a += (p.ta - p.a) * .12; if (p.ta && p.tc && Math.abs(p.tx - p.x) < 30) p.c = p.tc;
+      }
+      const dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
+      if (d2 < R2 && p.a > .05) { const d = Math.sqrt(d2) || 1, f = (1 - d / R) * 5.2; p.vx += dx / d * f; p.vy += dy / d * f; }
+      p.x += p.vx; p.y += p.vy;
+      if (Math.abs(p.vx) + Math.abs(p.vy) > .05 || Math.abs(p.ta - p.a) > .02 || !live) moving++;
+      if (p.a < .02) continue;
+      const sp = Math.min(3, (Math.abs(p.vx) + Math.abs(p.vy)) * .25);
+      ctx.globalAlpha = Math.min(1, p.a); ctx.fillStyle = p.c;
+      const s = dot * (1 + sp * .5); ctx.fillRect(p.x - s / 2, p.y - s / 2, s, s);
+    }
+    ctx.globalAlpha = 1;
+    if (opt.after) opt.after(ctx, now);
+    if (moving || opt.always) { idle = 0; kick(); } else if (++idle < 3) kick();
+  };
+  const kick = () => { if (!raf && alive) raf = requestAnimationFrame(step); };
+  const pm = e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; kick(); };
+  cv.addEventListener('pointermove', pm); cv.addEventListener('pointerdown', pm);
+  cv.addEventListener('pointerleave', () => { mx = my = -1e4; kick(); });
+  addEventListener('resize', () => { if (!alive) return; const ow = W; size(); if (Math.abs(ow - W) > 30 && opt.onResize) opt.onResize(); kick(); });
+  S.kick = kick;
+  return S;
+}
+
+/* visible-once helper: calls fn(el) the first time el is 25% in view */
+function whenSeen(el, fn, th = .25) {
+  if (!('IntersectionObserver' in window)) return fn(el);
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { io.disconnect(); fn(el); } }), { threshold: th });
+  io.observe(el);
+}
+/* scroll progress through a tall wrapper, 0..1 */
+function scrollP(wrap) { const r = wrap.getBoundingClientRect(), span = r.height - innerHeight; return Math.min(1, Math.max(0, -r.top / Math.max(1, span))); }
+const gapFor = w => w < 500 ? 4 : 4;
+
+const PROC_DOTS = [
+  /* 1: four frames that each form when you reach them */
+  { name: 'Dot frames: each step draws itself', d: 'Four small frames. As you reach each one, fine dots fly in and draw that step (screen, tooth, mirror, sparkle). Move the mouse or a finger over them and the dots run away, then settle back. No number badges: “Step one…” sits as quiet text.',
+    html: () => `<div class="sec"><div class="in">${head('Our veneer process', 'Four steps,', 'no surprises')}<ol class="dq1">${STEPS.map((s, i) => `<li><canvas aria-hidden="true"></canvas><span class="k">Step ${WORDS[i]}</span><h3>${STEP_T[i]}</h3><p>${s[1].split(/(?<=\.)\s/)[0]}</p></li>`).join('')}</ol></div></div>`,
+    init: el => el.querySelectorAll('.dq1 li').forEach((li, i) => { const cv = li.querySelector('canvas'); const st = DotStage(cv, { repel: 60, dot: 2.1 }); if (!st) return;
+      const build = () => { const w = st.W(), h = st.H(), s = Math.min(w, h) * .9; st.set(sampleScene((o, a, b) => sceneDraw(o, i, a, b), (w - s) / 2, (h - s) / 2, s, gapFor(w)), 'scatter', 1100); };
+      whenSeen(li, () => setTimeout(build, i % 2 * 120), .4); }) },
+
+  /* 2: one big stage that morphs from step to step as you scroll */
+  { name: 'One stage, dots morph step to step', d: 'The section pins while you scroll. One large drawing in dots: the screen melts into the tooth, the tooth into the mirror, the mirror into the finished smile. The text beside it changes with each step; four small dots show where you are.',
+    html: () => `<div class="dq2w"><div class="dq2"><div class="in"><div class="dq2g"><div class="dq2t">${head('Our veneer process', 'Four steps,', 'no surprises')}<div class="dq2s">${STEPS.map((s, i) => `<div class="it${i ? '' : ' on'}"><span class="k">Step ${WORDS[i]}</span><h3>${STEP_T[i]}</h3><p>${s[1]}</p></div>`).join('')}</div><div class="dq2p">${STEPS.map((_, i) => `<i${i ? '' : ' class="on"'}></i>`).join('')}</div></div><canvas aria-hidden="true"></canvas></div></div></div></div>`,
+    init: el => { const wrap = el.querySelector('.dq2w'), cv = el.querySelector('canvas'), its = [...el.querySelectorAll('.dq2s .it')], pips = [...el.querySelectorAll('.dq2p i')]; const st = DotStage(cv, { repel: 85, dot: 2.3 }); if (!st) return;
+      let cur = -1; const T = i => { const w = st.W(), h = st.H(), s = Math.min(w, h) * .92; return sampleScene((o, a, b) => sceneDraw(o, i, a, b), (w - s) / 2, (h - s) / 2, s, gapFor(w) + 1); };
+      const go = i => { if (i === cur) return; const first = cur < 0; cur = i; st.set(T(i), first ? 'scatter' : 'keep', first ? 1200 : 500); its.forEach((x, k) => x.classList.toggle('on', k === i)); pips.forEach((x, k) => x.classList.toggle('on', k <= i)); };
+      const f = () => { if (!document.body.contains(wrap)) return removeEventListener('scroll', f); const r = wrap.getBoundingClientRect(); if (r.top > innerHeight * .5) return; go(Math.min(3, Math.floor(scrollP(wrap) * 4.2))); };
+      addEventListener('scroll', f, { passive: true }); whenSeen(wrap, () => go(0), .15); } },
+
+  /* 3: a dotted path that travels and blooms into each step */
+  { name: 'Dotted path that blooms into each step', d: 'A thin line of dots runs across the section as you scroll (down the page on phones). Each time it reaches a step, the dots bloom into that drawing and the text fades in. Mouse or finger pushes the dots aside.',
+    html: () => `<div class="sec"><div class="in">${head('Our veneer process', 'Four steps,', 'no surprises')}<div class="dq3"><canvas aria-hidden="true"></canvas><ol>${STEPS.map((s, i) => `<li><span class="k">Step ${WORDS[i]}</span><h3>${STEP_T[i]}</h3><p>${s[1].split(/(?<=\.)\s/)[0]}</p></li>`).join('')}</ol></div></div></div>`,
+    init: el => { const box = el.querySelector('.dq3'), cv = box.querySelector('canvas'), lis = [...box.querySelectorAll('li')]; const st = DotStage(cv, { repel: 65, dot: 2.1 }); if (!st) return;
+      let path = [], scenes = [];
+      const lay = () => { const w = st.W(), h = st.H(), col = w < 700, g = gapFor(w); path = []; scenes = [];
+        for (let i = 0; i < 4; i++) { const cx = col ? w * .5 : w * (.125 + i * .25), cy = col ? h * (.08 + i * .25) : h * .22, s = col ? Math.min(w * .42, 140) : Math.min(w * .17, 170);
+          scenes.push(sampleScene((o, a, b) => sceneDraw(o, i, a, b), cx - s / 2, cy - s / 2, s, g)); }
+        if (col) for (let y = 0; y < h; y += 7) path.push({ x: w * .5 + Math.sin(y / 40) * 6, y, c: DOT.mist }); else for (let x = 0; x < w; x += 7) path.push({ x, y: h * .22 + Math.sin(x / 50) * 5, c: DOT.mist });
+        lis.forEach((li, i) => { li.style.setProperty('--y', col ? (h * (.08 + i * .25) + 90) + 'px' : ''); }); };
+      let key = '';
+      const upd = () => { const r = box.getBoundingClientRect(), col = st.W() < 700; const p = Math.min(1, Math.max(0, (innerHeight * .75 - r.top) / (col ? r.height * .9 : innerHeight * .7)));
+        const n = Math.min(4, Math.floor(p * 4.4)), pb = Math.min(10, Math.floor(p * 11)), k = n + ':' + pb; if (k === key) return; const first = !key; key = k;
+        const T = []; scenes.forEach((sc, i) => sc.forEach(q => T.push(i < n ? q : null))); const pn = Math.floor(path.length * pb / 10); path.forEach((q, i) => T.push(i < pn ? q : null));
+        st.set(T, first ? 'left' : 'keep', 350, col ? 'y' : 'x'); lis.forEach((li, i) => li.classList.toggle('on', i < n)); };
+      lay(); const f = () => { if (!document.body.contains(box)) return removeEventListener('scroll', f); upd(); };
+      addEventListener('scroll', f, { passive: true }); f(); } },
+
+  /* 4: big dotted numerals that dissolve into the drawing */
+  { name: 'Dotted numbers that turn into drawings', d: 'Each step starts as a large, thin “01” to “04” made of dots, so the order is clear without a badge. When the step comes into view, the number dissolves and the same dots rebuild as the drawing for that step.',
+    html: () => `<div class="sec"><div class="in">${head('Our veneer process', 'Four steps,', 'no surprises')}<ol class="dq4">${STEPS.map((s, i) => `<li><canvas aria-hidden="true"></canvas><div><span class="k">Step ${WORDS[i]}</span><h3>${STEP_T[i]}</h3><p>${s[1]}</p></div></li>`).join('')}</ol></div></div>`,
+    init: el => el.querySelectorAll('.dq4 li').forEach((li, i) => { const cv = li.querySelector('canvas'); const st = DotStage(cv, { repel: 60, dot: 2.1 }); if (!st) return;
+      const box = () => { const w = st.W(), h = st.H(), s = Math.min(w, h) * .92; return [(w - s) / 2, (h - s) / 2, s, gapFor(w)]; };
+      const [x, y, s, g] = box(); st.set(sampleScene((o, a) => numeralDraw(o, i, DOT.mist), x, y, s, g - 1).map(q => ({ ...q, c: DOT.mist })), 'scatter', 300);
+      whenSeen(li, () => setTimeout(() => { const [x, y, s, g] = box(); st.set(sampleScene((o, a, b) => sceneDraw(o, i, a, b), x, y, s, g), 'keep', 900); }, 650), .6); }) },
+
+  /* 5: dark stage, dots stream in from the left like the 30 Years video line */
+  { name: 'Dark stage: a stream of dots draws each step', d: 'A dark pinned stage in the brand slate. Dots arrive as a soft stream from the left (the same feeling as the “30 years” line in your video) and draw the step; when you scroll on, they stream out to the right and the next step streams in. Light dots, gold accents.',
+    html: () => `<div class="dq5w"><div class="dq5"><canvas aria-hidden="true"></canvas><div class="in"><div class="dq5t"><span class="ey">(Our veneer process)</span>${STEPS.map((s, i) => `<div class="it${i ? '' : ' on'}"><span class="k">Step ${WORDS[i]} of four</span><h3>${STEP_T[i]}</h3><p>${s[1]}</p></div>`).join('')}</div></div></div></div>`,
+    init: el => { const wrap = el.querySelector('.dq5w'), cv = el.querySelector('canvas'), its = [...el.querySelectorAll('.dq5t .it')];
+      const st = DotStage(cv, { repel: 90, dot: 2.3 }); if (!st) return; let cur = -1;
+      const T = i => { const w = st.W(), h = st.H(), col = w < 760, s = col ? Math.min(w * .78, h * .42) : Math.min(h * .72, w * .42), ox = col ? (w - s) / 2 : w * .52, oy = col ? h * .06 : (h - s) / 2;
+        return sampleScene((o, a, b) => sceneDraw(o, i, DOT.ink, DOT.gold), ox, oy, s, gapFor(w) + 1).map(p => ({ ...p, c: p.c === DOT.ink ? '#E8EEF1' : DOT.gold })); };
+      const go = i => { if (i === cur) return; cur = i; st.set(T(i), 'left', 1000); its.forEach((x, k) => x.classList.toggle('on', k === i)); };
+      const f = () => { if (!document.body.contains(wrap)) return removeEventListener('scroll', f); const r = wrap.getBoundingClientRect(); if (r.top > innerHeight * .5) return; go(Math.min(3, Math.floor(scrollP(wrap) * 4.2))); };
+      addEventListener('scroll', f, { passive: true }); whenSeen(wrap, () => go(0), .15); } },
+];
+/* sceneDraw ignores the colour args for ink in the light options, so the dark stage swaps colours after sampling */
+(() => { const sec = S2.find(s => s.id === 'process'); if (sec) sec.v.push(...PROC_DOTS); })();
+
 /* Page motion for the final page: scroll reveals, stacking cards, the "30" scroll film, the offer pop-up.
    Everything degrades to a static, fully visible page if JS or IntersectionObserver is missing. */
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1516,7 +1729,8 @@ document.addEventListener('click', e => { const a = e.target.closest('a[data-leg
 
 
 /* Picker core: renders sections, switches options, saves picks to the artifact db */
-const SECTIONS = [...S1, ...S2, ...S3];
+const SECTIONS = [...S1, ...S2, ...S3].filter(s => s.id !== 'process');
+{ const r = SECTIONS.findIndex(s => s.id === 'results'), d = SECTIONS.findIndex(s => s.id === 'designer'); if (r > d) SECTIONS.splice(d, 0, SECTIONS.splice(r, 1)[0]); }
 SECTIONS.forEach(s => { s.v = s.v.filter(v => !v.hide); });
 const TONES = { a: ['Light capitals', 'IGOR'], b: ['Bold two-tone capitals', 'OperatorX'], c: ['Tight lowercase, one hand-written word', 'Monoform'] };
 const REFS = [
