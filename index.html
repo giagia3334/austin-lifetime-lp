@@ -790,8 +790,9 @@ body.introing{overflow:hidden}
 .yc-t .eb{color:var(--mute)}.yc-t .hd{color:var(--ink);font-size:clamp(28px,3.4vw,44px)}.yc-t .hd em{color:var(--goldD)}.yc-t p:not(.eb){color:var(--mute);font-size:16px}
 @media (max-width:640px){.yc-t{bottom:16px;padding:20px 20px 18px}}
 /* visit cards: no width change on hover (text no longer re-wraps); gentle lift instead */
-@media (hover:hover){.acc3:hover .pn,.acc3 .pn:hover{flex:1}.acc3 .map,.acc3:hover .map{flex:1.6}
-  .acc3 .pn{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}.acc3 .pn:hover{transform:translateY(-4px);box-shadow:0 22px 40px -26px rgba(26,35,39,.5)}}
+@media (hover:hover) and (min-width:761px){.acc3:hover .pn{flex:1}.acc3 .pn:hover{flex:1.8}
+  .acc3 .cap{white-space:nowrap;min-width:0;max-width:100%}.acc3 .cap b{font-size:min(22px,1.7vw)}
+  .acc3 .cap span:last-child{font-size:13px;overflow:hidden;text-overflow:ellipsis}}
 /* 30-years video: back to no background behind the text */
 .yc-t{background:none;box-shadow:none;color:#fff;left:0;right:0;width:auto;margin-inline:auto;width:min(var(--max),100%);padding:0 18px}
 .yc-t .eb{color:rgba(255,255,255,.8)}.yc-t .hd{color:#fff;font-size:clamp(32px,4.6vw,60px)}.yc-t .hd em{color:var(--gold)}.yc-t p:not(.eb){color:#fff;max-width:520px}
@@ -868,9 +869,327 @@ body.introing{overflow:hidden}
 .dq5 h3{font-family:var(--disp);font-weight:600;font-size:clamp(26px,3vw,40px);letter-spacing:-.02em;margin:0 0 10px;color:#fff}
 .dq5 p{margin:0;color:#BDD4DE;max-width:40ch}
 @media(max-width:760px){.dq5 .in{align-items:flex-end;padding-bottom:9vh}.dq5t{width:100%;min-height:210px}}
+
+/* v46: video hero, why, cta bands */
+.hv{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#111;color:#fff}
+.hv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hv:after{content:"";position:absolute;inset:auto 0 0;height:55%;background:linear-gradient(to top,rgba(10,14,17,.6),rgba(10,14,17,0));pointer-events:none}
+.hv-t{position:absolute;z-index:1;left:0;right:0;bottom:clamp(40px,9vh,96px);margin-inline:auto;display:grid;justify-items:start;gap:18px}
+.hv-t .hd{color:#fff;font-size:clamp(40px,6.6vw,92px);margin:0;max-width:13ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hv-t .hd em{font-style:normal;color:var(--gold)}
+.hv-t p{margin:0;color:#fff;font-size:clamp(16px,1.4vw,19px);max-width:40ch;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.hv-t .btn{margin-top:6px;padding:15px 26px;font-size:16px}
+.hv-t>*{animation:rise 1.1s cubic-bezier(.16,1,.3,1) 2.8s both}
+.why{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.wy{padding:clamp(22px,2.6vw,36px) clamp(16px,2vw,28px) clamp(22px,2.6vw,36px) 0;border-bottom:1px solid var(--line)}
+.wy b{display:block;font-family:var(--disp);font-weight:300;font-size:clamp(44px,5vw,72px);letter-spacing:-.04em;line-height:1;color:var(--night)}
+.wy h3{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.01em;margin:14px 0 6px}
+.wy p{margin:0;color:var(--mute);font-size:15px;max-width:32ch}
+@media(max-width:820px){.why{grid-template-columns:1fr 1fr}.wy b{font-size:40px}.wy h3{font-size:17px}}
+.ctab{background:var(--night);color:#fff;padding-block:clamp(44px,6vw,80px)}
+.ctab .in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ctab .hd{color:#fff;margin:0;font-size:clamp(26px,3.4vw,44px)}
+.ctab .btn{padding:15px 26px;font-size:16px}
+
+/* FAQ on desktop: questions left, answer right, simple fade */
+@media (min-width:900px){
+  .fflip{perspective:none;height:auto!important;min-height:0!important}.ffi{height:auto!important;min-height:0!important}
+  .ffi,.fflip.on .ffi{transform:none;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
+  .ffa,.ffb{position:static;transform:none;backface-visibility:visible;-webkit-backface-visibility:visible}
+  .ffa .chips{display:grid;gap:8px}
+  .ffa .chips button{width:100%;text-align:left;transition:background .25s,color .25s,border-color .25s}
+  .ffa .chips button[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+  .ffb{cursor:default;min-height:240px;padding:32px}
+  .ffb .ffback{display:none}.ffb h3{margin-top:0}
+  .ffb.sw{animation:faqIn .35s ease both}
+}
+@keyframes faqIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* form section: backgrounds run edge to edge on desktop */
+@media (min-width:900px){
+  .sec.fsec{padding-block:0;background:linear-gradient(90deg,var(--night) 50%,var(--card) 50%)}
+  .fsec .fbox{width:100%;border-radius:0;box-shadow:none;background:transparent;grid-template-columns:1fr 1fr;min-height:min(680px,82vh)}
+  .fsec .fbox>.ptop{background:transparent;padding:72px 56px 72px 0}
+  .fsec .fbox>.form{background:transparent;padding:72px 0 8px 56px;align-self:end}
+  .fsec .fbox>.fcall{padding-left:56px;padding-right:0;padding-bottom:72px;align-self:start}
+}
+
+/* why: phone layout options A/B/C (temporary picker) */
+.whysw{display:none}
+.wy h3{margin-top:14px}
+@media(max-width:820px){
+  .whysw{display:flex;align-items:center;gap:8px;margin:0 0 16px;font:500 13px var(--body);color:var(--mute)}
+  .whysw button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);font:600 14px var(--body);color:var(--ink);cursor:pointer}
+  .whysw button[aria-pressed="true"]{background:var(--night);color:#fff;border-color:var(--night)}
+  /* A: rows, number left */
+  .why.m-a{grid-template-columns:1fr}
+  .why.m-a .wy{display:grid;grid-template-columns:86px 1fr;gap:6px;align-items:center;padding:16px 0}
+  .why.m-a .wy b{font-size:38px}.why.m-a .wy h3{margin:0 0 3px;font-size:17px}.why.m-a .wy p{font-size:14px;max-width:none}
+  /* B: swipe cards */
+  .why.m-b{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;border-top:0;margin-inline:-18px;padding:2px 18px 10px;scrollbar-width:none}
+  .why.m-b::-webkit-scrollbar{display:none}
+  .why.m-b .wy{flex:0 0 68%;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+  .why.m-b .wy b{font-size:52px}.why.m-b .wy p{max-width:none}
+  /* C: compact tiles, no description */
+  .why.m-c{grid-template-columns:1fr 1fr;gap:10px;border-top:0}
+  .why.m-c .wy{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+  .why.m-c .wy b{font-size:36px}.why.m-c .wy h3{font-size:15.5px;margin:10px 0 0}.why.m-c .wy p{display:none}
+}
+
+/* team: desktop layout options (temporary picker) */
+.teamsw,.dcard .sl{display:none}
+@media(min-width:900px){
+  .teamsw{display:flex;align-items:center;gap:8px;margin:0 0 18px;font:500 13px var(--body);color:var(--mute)}
+  .teamsw button{border-radius:99px;border:1px solid var(--line);background:var(--card);font:600 13.5px var(--body);color:var(--ink);padding:9px 15px;cursor:pointer}
+  .teamsw button[aria-pressed="true"]{background:var(--night);color:#fff;border-color:var(--night)}
+  .dgrid.t-b{grid-template-columns:repeat(6,1fr);gap:14px}
+  .dgrid.t-b .ph{aspect-ratio:3/4;border-radius:18px}
+  .dgrid.t-b .nm{left:6px;right:6px;bottom:6px;padding:9px 10px;border-radius:12px}
+  .dgrid.t-b .nm h3{font-size:14px}.dgrid.t-b .nm p{display:none}
+  .dgrid.t-b .bio{display:none}.dgrid.t-b .sl{display:block;margin:10px 2px 0;font-size:13.5px;line-height:1.4;color:var(--mute)}
+  .dgrid.t-c{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;cursor:grab;padding-bottom:6px}
+  .dgrid.t-c::-webkit-scrollbar{display:none}
+  .dgrid.t-c .dcard{flex:0 0 calc((100% - 48px)/3.6);scroll-snap-align:start}
+  .dgrid.t-c .ph{aspect-ratio:1/1}
+}
+
+/* FAQ looks (temporary picker) */
+.faqsw{background:var(--paper);padding:14px 0;border-top:1px solid var(--line)}
+.faqsw .in{display:flex;align-items:center;gap:8px;font:500 13px var(--body);color:var(--mute)}
+.faqsw button{border-radius:99px;border:1px solid var(--line);background:var(--card);font:600 13.5px var(--body);color:var(--ink);padding:9px 15px;cursor:pointer}
+.faqsw button[aria-pressed="true"]{background:var(--night);color:#fff;border-color:var(--night)}
+.fqacc details{border-top:1px solid var(--line)}.fqacc details:last-child{border-bottom:1px solid var(--line)}
+.fqacc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 0;font-family:var(--disp);font-weight:600;font-size:clamp(18px,1.7vw,22px);letter-spacing:-.015em}
+.fqacc summary::-webkit-details-marker{display:none}
+.fqacc summary i{flex:0 0 34px;height:34px;border-radius:50%;border:1px solid var(--line);position:relative;transition:transform .3s,background .3s}
+.fqacc summary i:before,.fqacc summary i:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.fqacc summary i:after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
+.fqacc details[open] summary i{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.fqacc details[open] summary i:after{transform:translate(-50%,-50%) rotate(0)}
+.fqacc details p{margin:0;padding:0 52px 22px 0;color:var(--mute);font-size:16px;max-width:60ch;animation:faqIn .35s ease both}
+.fqa{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,80px);align-items:start}
+.fqa-h .head{margin-bottom:14px}.fqa-h .lede a{color:inherit;font-weight:600}
+@media(min-width:900px){.fqa-h{position:sticky;top:90px}}
+@media(max-width:899px){.fqa{grid-template-columns:1fr;gap:8px}}
+.fqb{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fqb article{background:var(--card);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px;min-height:200px}
+.fqb i{font:normal 12px var(--mono);color:var(--goldD,#8a6a12)}
+.fqb h3{font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.02em;line-height:1.15;margin:0}
+.fqb p{margin:auto 0 0;color:var(--mute);font-size:15px}
+@media(max-width:900px){.fqb{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.fqb{grid-template-columns:1fr;gap:10px}.fqb article{min-height:0;padding:18px}}
+.fqc{max-width:860px}.fqc .head{text-align:center}.fqc .head .eb{justify-content:center}
+.fqacc.dk details{border-color:rgba(255,255,255,.16)}.fqacc.dk summary{color:#fff;font-size:clamp(19px,2vw,26px);padding:24px 0}
+.fqacc.dk summary i{border-color:rgba(255,255,255,.35)}.fqacc.dk details p{color:rgba(255,255,255,.72);font-size:17px}
+
+/* why on phones: details rise in on scroll + two more views (D bento, E big numbers) */
+@media(max-width:820px){
+  .why .wy{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .why .wy.seen{opacity:1;transform:none}
+  .why .wy b{transform-origin:left bottom;transform:scale(.7);transition:transform .8s cubic-bezier(.16,1,.3,1) .1s}
+  .why .wy.seen b{transform:none}
+  .whysw button{width:36px;height:36px}
+  /* D: bento with colour */
+  .why.m-d{grid-template-columns:1fr 1fr;gap:10px;border-top:0}
+  .why.m-d .wy{border:0;border-radius:20px;padding:18px;background:var(--card)}
+  .why.m-d .wy p{font-size:13.5px;max-width:none}.why.m-d .wy h3{font-size:16px;margin:10px 0 4px}
+  .why.m-d .wy:nth-child(1),.why.m-d .wy:nth-child(4){grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:22px}
+  .why.m-d .wy:nth-child(1){background:var(--night);color:#fff}.why.m-d .wy:nth-child(1) b{color:#fff;font-size:76px}.why.m-d .wy:nth-child(1) p{color:rgba(255,255,255,.75)}
+  .why.m-d .wy:nth-child(4){background:var(--gold);color:var(--night)}.why.m-d .wy:nth-child(4) b{font-size:52px}.why.m-d .wy:nth-child(4) p{color:rgba(26,35,39,.75)}
+  .why.m-d .wy:nth-child(1) h3,.why.m-d .wy:nth-child(4) h3{margin-top:0}
+  .why.m-d .wy:nth-child(2),.why.m-d .wy:nth-child(5){background:var(--mist2)}
+  /* E: big numbers, alternating sides */
+  .why.m-e{grid-template-columns:1fr;border-top:0}
+  .why.m-e .wy{border:0;padding:6px 0 26px;display:flex;flex-direction:column;align-items:flex-start;width:100%}
+  .why.m-e{overflow:hidden}.why.m-e .wy b{font-size:78px;white-space:nowrap;font-weight:200;line-height:.9;color:var(--night)}
+  .why.m-e .wy:nth-child(even){align-items:flex-end;text-align:right}.why.m-e .wy:nth-child(even) b{transform-origin:right bottom;color:var(--goldD,#b8891f)}
+  .why.m-e .wy h3{font-size:20px;margin:8px 0 4px}.why.m-e .wy p{max-width:26ch;font-size:15px}
+}
+@media(max-width:820px) and (prefers-reduced-motion:reduce){.why .wy,.why .wy b{opacity:1;transform:none;transition:none}}
+
+/* why v2: clickable results fact, mixed A+D phone layout */
+a.wy{text-decoration:none;color:inherit;display:block}
+.wy.go p{color:var(--ink);font-weight:600}.wy.go p i{font-style:normal;display:inline-block;transition:transform .3s}
+a.wy:hover p i{transform:translateX(5px)}
+@media(min-width:821px){a.wy:hover b{color:var(--goldD)}.wy b{transition:color .3s}}
+@media(max-width:820px){
+  .why.m-x{grid-template-columns:1fr;border-top:0;gap:0}
+  .why.m-x .wy{display:grid;grid-template-columns:104px 1fr;gap:4px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+  .why.m-x .wy b{font-size:34px;white-space:nowrap}.why.m-x .wy.sm b{font-size:24px;font-weight:400;letter-spacing:-.02em}
+  .why.m-x .wy h3{margin:0 0 3px;font-size:17px}.why.m-x .wy p{font-size:14px;max-width:none}
+  .why.m-x .wy.go,.why.m-x .wy.dk{border:0;border-radius:20px;padding:20px 18px;margin:12px 0}
+  .why.m-x .wy.go{background:var(--gold);color:var(--night)}.why.m-x .wy.go p{color:var(--night)}
+  .why.m-x .wy.dk{background:var(--night);color:#fff;margin-bottom:0}.why.m-x .wy.dk b{color:#fff}.why.m-x .wy.dk p{color:rgba(255,255,255,.75)}
+  .why.m-x .wy:nth-child(2){border-bottom:0}.why.m-x .wy:nth-child(5){border-bottom:0}
+}
+
+/* why v3: gold results block without a token; CEREC row without a token on phones */
+.wy.go b{display:none}
+@media(min-width:821px){a.wy.go{background:var(--gold);color:var(--night);display:grid;place-content:center;text-align:center;padding:28px;border-bottom:0}
+  .wy.go h3{margin:0 0 8px;font-size:clamp(22px,2vw,28px)}.wy.go p{max-width:none;color:var(--night)}}
+@media(max-width:820px){
+  .why.m-x .wy.go{grid-template-columns:1fr;text-align:center;border-radius:0;margin:14px -18px;padding:30px 18px}
+  .why.m-x .wy.go h3{font-size:21px;margin:0 0 6px}.why.m-x .wy.go p{font-size:15px}
+  .why.m-x .wy.sm{grid-template-columns:1fr}.why.m-x .wy.sm b{display:none}
+}
+/* services cards on phones: title only, no number or category line */
+@media(max-width:820px){#pk-services .pcard .lab{display:none}}
+
+/* why v4: order 3D, All, CEREC, 4.9, then two edge-to-edge blocks (30 years dark, results gold) */
+.wy .mo{display:none}
+@media(max-width:820px){
+  .wy .mo{display:inline}.wy .de{display:none}
+  .why.m-x .wy.sm{grid-template-columns:104px 1fr}.why.m-x .wy.sm b{display:block;font-size:27px;font-weight:300}
+  .why.m-x .wy:nth-child(2),.why.m-x .wy:nth-child(5){border-bottom:1px solid var(--line)}
+  .why.m-x .wy:nth-child(4){border-bottom:0}
+  .why.m-x .wy.dk{grid-template-columns:1fr;text-align:center;border:0;border-radius:0;margin:14px -18px 0;padding:30px 18px}
+  .why.m-x .wy.dk b{display:none}.why.m-x .wy.dk h3{font-size:21px;margin:0 0 6px}.why.m-x .wy.dk p{font-size:15px}
+  .why.m-x .wy.go{margin:0 -18px}
+}
+
+/* why v5: five facts; gold spans two cells on desktop; compact on phones to fit one screen */
+@media(min-width:821px){a.wy.go{grid-column:span 2}}
+@media(max-width:820px){
+  #pk-years .sec{padding-block:36px 0}#pk-years .head{margin-bottom:14px}
+  .why.m-x .wy{padding:13px 0}.why.m-x .wy p{font-size:13.5px;line-height:1.4}
+  .why.m-x .wy:nth-child(4){border-bottom:0}
+  .why.m-x .wy.go{margin:10px -18px 0;padding:24px 18px}
+}
+/* why v6: results block in dark blue instead of gold */
+a.wy.go,.why.m-x .wy.go{background:var(--night);color:#fff}
+.wy.go h3{color:#fff}.wy.go p,.why.m-x .wy.go p{color:rgba(255,255,255,.85)}
+
+/* FAQ: question cards that flip one by one */
+.fqf{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fqfc{all:unset;box-sizing:border-box;cursor:pointer;perspective:1200px;display:block;min-width:0}
+.fqfc:focus-visible{outline:2px solid var(--goldD);outline-offset:3px;border-radius:20px}
+.fqfc .fi{display:grid;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.fqfc[aria-pressed="true"] .fi{transform:rotateX(180deg)}
+.fqfc .ff,.fqfc .fb{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;padding:24px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;box-sizing:border-box}
+.fqfc .ff{background:var(--card)}
+.fqfc .ff b{font-family:var(--disp);font-weight:600;font-size:clamp(19px,1.7vw,23px);letter-spacing:-.02em;line-height:1.15}
+.fqfc .ff i{font-style:normal;align-self:flex-end;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:18px;transition:background .3s,border-color .3s}
+.fqfc:hover .ff i{background:var(--gold);border-color:var(--gold)}
+.fqfc .fb{background:var(--night);color:#fff;transform:rotateX(180deg);justify-content:center}
+.fqfc .fb small{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--mist)}
+.fqfc .fb>span{font-size:16px;line-height:1.45}
+@media(max-width:900px){.fqf{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.fqf{grid-template-columns:1fr;gap:10px}.fqfc .ff,.fqfc .fb{min-height:0;padding:18px}.fqfc .ff{flex-direction:row;align-items:center}.fqfc .ff i{align-self:center;flex:0 0 34px}.fqfc .fb>span{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.fqfc .fi{transition:none}}
+
+/* $159 offer copy, hero call button, centred pop-up on phones */
+.pfine{margin:12px 0 0;font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.62)}
+.ptop .pq{font-style:normal}
+.ctab p{margin:8px 0 0;color:rgba(255,255,255,.78);font-size:16px}
+.hv-b{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}.hv-t .hv-b .btn{margin-top:0}
+.hv-call{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hv-call:hover{background:#fff;color:var(--ink)}
+@media (max-width:640px){
+  .pop{place-items:center;padding:16px}
+  .pbox{width:100%;border-radius:24px;max-height:calc(100vh - 32px);max-height:calc(100svh - 32px);transform:translateY(24px) scale(.98)}
+  .pbox .form{padding:16px 20px 20px}
+}
+
+/* short pop-up */
+.ptop.pshort{padding-right:64px}.ptop.pshort .pof{margin:8px 0 0}
+.pmini{margin:10px 0 0;text-align:center;font-size:12px;color:var(--mute)}
+.pmini{width:100%;justify-self:stretch;grid-column:1/-1;max-width:none!important}.ptop.pshort .pof b{white-space:nowrap}
+.pnote{margin:10px 0 0;text-align:center;font-size:12px;color:var(--mute)}
+
+/* ---- phone pass: FAQ per device, results block with offer, full-screen closing form, more air ---- */
+.faq-m{display:none}
+@media(max-width:820px){.faq-m{display:block}.faq-d{display:none}}
+.wy.go{background:var(--night);color:#fff}
+.wy.go .gol{color:rgba(255,255,255,.8);font-weight:400;margin:0 0 14px}
+.wy.go .gob{display:flex;gap:10px 22px;flex-wrap:wrap;justify-content:center;margin:0}
+.wy.go .gob a{color:#fff;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:2px}
+.wy.go .gob a:last-child{color:var(--gold);border-color:var(--gold)}
+.wy.go .gob a i{font-style:normal;display:inline-block;transition:transform .3s}.wy.go .gob a:hover i{transform:translateX(4px)}
+@media(min-width:821px){.wy.go{grid-column:span 2;display:grid;place-content:center;text-align:center;padding:28px;border-bottom:0}}
+@media(max-width:820px){
+  .why.m-x .wy.go{display:block;padding:28px 18px}
+  .why.m-x .wy.go .gol{font-size:15px}.why.m-x .wy.go .gob a{font-size:15px}
+  /* closing form: its own full-screen section, no card */
+  #pk-form .sec.fsec{padding:0}#pk-form .fsec .in{padding:0;max-width:none}
+  #pk-form .fbox{width:100%;border-radius:0;box-shadow:none;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;background:var(--card)}
+  #pk-form .fbox .ptop{padding:44px 22px 30px}
+  #pk-form .fbox .form{padding:28px 22px 10px;flex:1}
+  #pk-form .fbox .fcall{padding:8px 22px 96px}
+  /* more air between and inside sections */
+  .sec{padding-block:72px}
+  .head{margin-bottom:28px}
+  #pk-services .pcard .tags{display:none}
+  #pk-services .pcard .tx{padding:22px 20px 26px;gap:10px;min-height:0}
+  #pk-services .pstack{gap:18px}
+  #pk-tech .tcard .lab{display:none}#pk-tech .tcard .tx{padding:18px 18px 22px;gap:8px}
+  #pk-results .fine,#pk-designer .fine{margin-top:18px}
+  .ctab{padding-block:56px}.ctab .in{gap:22px}
+  #pk-reviews .sec,#pk-visit .sec{padding-block:76px}
+  .acc3{gap:12px}
+}
+@media(max-width:820px){#pk-form .sec.fsec{padding:0!important}#pk-form .fsec .in{padding:0!important}#pk-form .fbox{transform:none!important;max-height:none!important;overflow:visible}}
+.fbox{transform:none!important}
+@media(max-width:820px){#pk-form .fbox .ptop .pq{display:none}#pk-form .fbox .ptop{padding:36px 22px 24px}#pk-form .fbox .fcall{padding-bottom:84px}}
+
+/* small offer strip under Why choose us; results block back to one link */
+a.wy.go{display:grid;place-content:center;text-align:center;text-decoration:none}
+a.wy.go p{color:rgba(255,255,255,.85);font-weight:600;margin:0}
+.ofs{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px;padding:16px 22px;border-radius:16px;background:var(--mist2);color:var(--ink);text-decoration:none;font-size:16px}
+.ofs b{font-family:var(--disp);font-weight:600;letter-spacing:-.01em}
+.ofs .ofg{font-weight:600;white-space:nowrap}.ofs .ofg i{font-style:normal;display:inline-block;transition:transform .3s}.ofs:hover .ofg i{transform:translateX(4px)}
+@media(max-width:820px){
+  .why.m-x a.wy.go{display:block;padding:26px 18px}
+  .ofs{margin:0 -18px;border-radius:0;padding:15px 18px;font-size:14.5px}
+}
+@media(max-width:820px){.ofs{background:var(--card);border-bottom:1px solid var(--line)}}
+
+/* FAQ -> form transition options (temporary picker) */
+.joinsw{position:fixed;left:14px;bottom:14px;z-index:60;display:flex;align-items:center;gap:6px;padding:6px 8px 6px 12px;border-radius:99px;background:rgba(255,255,255,.94);box-shadow:0 10px 30px -12px rgba(12,17,20,.5);font:500 12.5px var(--body);color:var(--mute)}
+.joinsw button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--card);font:600 13px var(--body);color:var(--ink);cursor:pointer}
+.joinsw button[aria-pressed="true"]{background:var(--night);color:#fff;border-color:var(--night)}
+/* A: the form rises over the FAQ like a sheet */
+body.join-a #pk-faq .sec{padding-bottom:calc(clamp(54px,8vw,104px) + 48px)}
+body.join-a #pk-form{position:relative;z-index:2;margin-top:-48px}
+body.join-a #pk-form .sec.fsec{border-radius:36px 36px 0 0;overflow:hidden;box-shadow:0 -22px 44px -22px rgba(12,17,20,.45)}
+@media(max-width:820px){body.join-a #pk-faq .sec{padding-bottom:120px}body.join-a #pk-form .sec.fsec{border-radius:28px 28px 0 0}body.join-a #pk-form .fbox{overflow:hidden!important;border-radius:28px 28px 0 0}}
+/* B: FAQ and form share one dark block; the form is a white card on it */
+body.join-b #pk-faq .faq-d .sec,body.join-b #pk-faq .faq-m .sec{background:var(--night)}
+body.join-b #pk-faq .head .hd{color:#fff}body.join-b #pk-faq .head .hd .dim{color:var(--mist)}body.join-b #pk-faq .head .eb{color:rgba(255,255,255,.7)}
+body.join-b #pk-faq .sec{padding-bottom:28px}
+body.join-b #pk-faq .fqfc .fb{background:#fff;color:var(--ink)}body.join-b #pk-faq .fqfc .fb small{color:var(--mute)}
+@media(min-width:900px){
+  body.join-b #pk-form .sec.fsec{background:var(--night)}
+  body.join-b #pk-form .fbox{padding-block:56px 72px;min-height:0}
+  body.join-b #pk-form .fbox>.form{background:var(--card);border-radius:28px 28px 0 0;margin-left:48px;padding:40px 40px 8px;align-self:end}
+  body.join-b #pk-form .fbox>.fcall{background:var(--card);border-radius:0 0 28px 28px;margin:0 0 0 48px;padding:8px 40px 40px;align-self:start}
+  body.join-b #pk-form .fbox>.ptop{padding-block:0}
+}
+@media(max-width:820px){
+  body.join-b #pk-form .fbox{background:var(--night);min-height:0;padding-bottom:96px}
+  body.join-b #pk-form .fbox .ptop{padding-top:20px}
+  body.join-b #pk-form .fbox .form{background:var(--card);margin:0 14px;border-radius:24px 24px 0 0;padding:24px 18px 8px;flex:0 0 auto}
+  body.join-b #pk-form .fbox .fcall{background:var(--card);margin:0 14px;border-radius:0 0 24px 24px;padding:8px 18px 24px}
+}
+body.join-a #pk-form,body.join-a #st-form,body.join-a #st-form>div{background:transparent!important}
+
+/* doctors, one row of six: click a doctor to open the full bio under the row */
+.dcard .more,.dbio{display:none}
+@media(min-width:900px){
+  .dgrid.t-b .dcard{cursor:pointer;border-radius:18px;outline-offset:4px}
+  .dgrid.t-b .dcard .more{display:inline-block;margin-left:2px;font-weight:600;color:var(--ink);white-space:nowrap}
+  .dgrid.t-b .dcard .more i{font-style:normal;display:inline-block;transition:transform .3s}
+  .dgrid.t-b .dcard.on .more i{transform:rotate(45deg)}
+  .dgrid.t-b .dcard .ph{transition:box-shadow .3s}
+  .dgrid.t-b .dcard.on .ph{box-shadow:0 0 0 3px var(--gold)}
+  .dgrid.t-b:has(.dcard.on) .dcard:not(.on) .ph img{opacity:.55}
+  .dbio:not([hidden]){display:grid;grid-template-columns:auto 1fr;gap:8px 32px;align-items:baseline;margin-top:22px;padding:24px 28px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
+  .dbio h3{margin:0;font-family:var(--disp);font-weight:600;font-size:22px;letter-spacing:-.02em;white-space:nowrap}
+  .dbio p{margin:0;color:var(--mute);font-size:16px;line-height:1.5;max-width:80ch}
+  .dbio.sw{animation:faqIn .35s ease both}
+}
+@media(max-width:900px){#pk-tech .over.tover.tplain{background:none!important;padding:0!important;min-height:0!important;border-radius:0;overflow:visible}}
 </style>
 <div id="app"></div><footer class="lf"><div class="in"><span>© 2026 Austin Lifetime Dental LLLP · 2206 W Parmer Ln, Austin, TX 78727</span><span class="lfl"><a href="https://www.lifetimedental.com/privacy-policy/" data-legal="Privacy Policy">Privacy Policy</a><a href="https://www.lifetimedental.com/terms-of-use-terms-of-service/" data-legal="Terms of Use">Terms of Use</a></span></div></footer><div id="intro" aria-hidden="true"><div class="ib"><img src="a/logo-white.png" alt=""><p>30 years of serving <em>Austin</em></p></div></div>
-<div class="fab"><a class="bk" href="#pk-form" aria-label="Book a consult"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a><a class="tl3" href="tel:5128351924" aria-label="Call (512) 835-1924"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
+<div class="fab"><a class="bk" href="#pk-form" aria-label="Book a visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a><a class="tl3" href="tel:5128351924" aria-label="Call (512) 835-1924"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
 <script>
 /* Section data, part 1: navigation, hero, 30 years, services */
 const A = 'a/';
@@ -878,7 +1197,7 @@ const TEL = '(512) 835-1924';
 const img = (f, alt = '', cls = 'cover', extra = '') => `<img class="${cls}" src="${A}${f}" alt="${alt}" loading="lazy" ${extra}>`;
 const H = (a, b = '', tag = 'h2') => `<${tag} class="hd">${a}${b ? ` <span class="dim">${b}</span>` : ''}</${tag}>`;
 const head = (eb, a, b, lede = '') => `<div class="head">${eb ? `<p class="eb">(${eb})</p>` : ''}${H(a, b)}${lede ? `<p class="lede">${lede}</p>` : ''}</div>`;
-const CTA = (dark = false) => `<div class="row"><a class="btn b-gold" href="#pk-form">Book a consult</a><a class="btn b-line" href="tel:5128351924">Call ${TEL}</a></div>`;
+const CTA = (dark = false) => `<div class="row"><a class="btn b-gold" href="#pk-form">Book a visit</a><a class="btn b-line" href="tel:5128351924">Call ${TEL}</a></div>`;
 const ic = {
   home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg>',
   spark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg>',
@@ -907,6 +1226,13 @@ const SVC4 = [
 const swapOnce = el => { const s = el.querySelector('.swap span'); if (!s) return; let i = 0, run = false;
   const go = () => { if (run) return; run = true; const t = setInterval(() => { if (!document.body.contains(s)) return clearInterval(t); i++; s.style.transform = `translateY(${-i * 33.333}%)`; if (i >= 2) clearInterval(t); }, 1700); };
   if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { go(); io.disconnect(); } }), { threshold: .5 }); io.observe(s.parentElement); } else go(); };
+const WHY = [
+  ['3D', 'Preview before you start', 'A digital scan shows your new smile before any treatment begins.'],
+  ['All', 'Cosmetic services under one roof', 'Veneers, whitening, bonding, aligners and implants at our Parmer Lane office.'],
+  ['CEREC', 'Same-day crowns', 'We design and make your crown in the office, often in a single visit.', 'sm'],
+  ['4.9★', '800+ Google reviews', 'Patients rate us 4.9 out of 5 on Google.'],
+  ['', 'Results that look naturally yours', '', 'go', '#pk-results'],
+];
 const OFFERS = [['Free', 'Your consultation is free', 'Talk through veneers, whitening or implants with a Parmer Lane dentist. No cost, no pressure.'], ['50% off', 'Your first cleaning', 'First visit? Take 50% off your first cleaning at our Parmer Lane office.']];
 const S1 = [
   {
@@ -944,7 +1270,8 @@ const S1 = [
           <div class="bub hm" style="width:12vw;max-width:150px;aspect-ratio:1;right:20%;bottom:6%;animation-delay:-2s">${img('smile1.webp', '', '')}</div>
           <div class="bub" style="width:14vw;max-width:170px;aspect-ratio:1;right:2%;bottom:22%;animation-delay:-7s">${img('r09a.webp', '', '')}</div>
           <p class="eb">(30 years of smiles in Austin)</p>${H('Plan your new <em>smile</em>', 'at Parmer Lane', 'h1')}
-          <p>See a 3D preview before treatment begins, with costs explained before anything is scheduled.</p>${CTA()}</div></div>` },
+          <p>See a 3D preview before treatment begins, with costs explained before anything is scheduled.</p>${CTA()}</div></div>` },      { name: 'Full-screen video', d: 'The 30-second best-moments video fills the first screen. One headline, one line, one button.',
+        html: () => `<div class="hv">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}<div class="in hv-t"><h1 class="hd">30 years of <em>smiles</em> in Austin</h1><div class="hv-b"><a class="btn b-gold" href="#pk-form" data-offer>Book a visit</a><a class="btn hv-call" href="tel:5128351924">Call us</a></div></div></div>` },
     ],
   },
   {
@@ -956,9 +1283,9 @@ const S1 = [
     id: 'services', name: 'Services', ref: 'IGOR · OperatorX · Monoform',
     v: [
       { name: 'Stacking cards with big numbers', d: 'The “How it works” card style you liked, used for services: four cards pile up as you scroll.',
-        html: () => `<div class="sec deep"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard" style="top:${76 + i * 16}px"><div class="num">0${i + 1}</div><div class="tx"><div class="lab"><span>${c[3]}</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div></article>`).join('')}</div></div></div>` },
+        html: () => `<div class="sec deep"><div class="in">${head('Services', 'What we do')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard" style="top:${76 + i * 16}px"><div class="num">0${i + 1}</div><div class="tx"><div class="lab"><span>${c[3]}</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div></article>`).join('')}</div></div></div>` },
       { name: 'Same cards with a photo', d: 'Text on the left, the photo fills the whole right half; both halves move as one card.',
-        html: () => `<div class="sec tint"><div class="in">${head('Services', 'Everything your', '<em>smile</em> needs')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard ph2" style="top:${76 + i * 16}px;--i:${i}"><div class="tx"><div class="lab"><span>0${i + 1} · ${c[3]}</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div><div class="pp">${img(c[4], c[0])}</div></article>`).join('')}</div></div></div>`,
+        html: () => `<div class="sec tint"><div class="in">${head('Services', 'What we do')}<div class="pstack">${SVC4.map((c, i) => `<article class="pcard ph2" style="top:${76 + i * 16}px;--i:${i}"><div class="tx"><div class="lab"><span>0${i + 1} · ${c[3]}</span></div><h3>${c[0]}</h3><p>${c[1]}</p><div class="tags">${c[2].map(t => `<i>${t}</i>`).join('')}</div></div><div class="pp">${img(c[4], c[0])}</div></article>`).join('')}</div></div></div>`,
         init: el => stackInit(el) },
       { name: 'Square photo tiles (IGOR)', d: 'The style you pointed at: square photos, a plain capital label under each.',
         html: () => `<div class="sec"><div class="in">${head('', 'Services', '')}<div class="tiles">${SERVICES.map(s => `<a class="tile" href="#pk-form"><div class="ph">${img(s.f, s.t)}</div><h3>${s.t}</h3><p>${s.d}</p></a>`).join('')}</div></div></div>` },
@@ -992,7 +1319,9 @@ const S1 = [
       { name: 'B: Big 30 beside the video', d: 'A solid gold 30 with short facts on one side, the video in a frame on the other.',
         html: () => `<div class="sec"><div class="in"><div class="yb"><div class="yb-t"><b class="yb-n">30</b><h2 class="hd">years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle all of your dental care right here, with doctors you know and trust.</p><ul><li><b>4.9 ★</b> 800+ Google reviews</li><li><b>6</b> dentists at one practice</li></ul></div><div class="yb-v">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div></div>` },
       { name: 'C: Full-screen video with text', d: 'The video fills the screen, a soft dark fade at the bottom, white heading on top.',
-        html: () => `<div class="yc">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}<i class="yc-f" aria-hidden="true"></i><div class="in yc-t"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle all of your dental care right here, with doctors you know and trust.</p></div></div>` },
+        html: () => `<div class="yc">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}<i class="yc-f" aria-hidden="true"></i><div class="in yc-t"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle all of your dental care right here, with doctors you know and trust.</p></div></div>` },      { name: 'Why choose us', d: 'Six plain facts about the office.',
+        html: () => `<div class="sec"><div class="in">${head('Why choose us', 'Your new smile,', 'designed by dentists who care')}<div class="why m-x">${WHY.map(w => w[4] ? `<a class="wy go" href="${w[4]}"><div><h3>${w[1]}</h3><p>See real before and afters <i aria-hidden="true">→</i></p></div></a>` : `<div class="wy ${w[3] || ''}"><b>${w[0]}</b><div><h3>${w[1]}</h3><p>${w[2]}</p></div></div>`).join('')}</div><a class="ofs" href="#pk-form" data-offer><span><b>$159 new patient visit</b> · a $530 value</span><span class="ofg">Claim offer <i aria-hidden="true">→</i></span></a></div></div>`,
+        init: el => { const ws = [...el.querySelectorAll('.wy')]; if (!('IntersectionObserver' in window)) return ws.forEach(w => w.classList.add('seen')); const io = new IntersectionObserver(es => { let n = 0; es.forEach(e => { if (e.isIntersecting) { const t = e.target; setTimeout(() => t.classList.add('seen'), 90 * n++); io.unobserve(t); } }); }, { threshold: .25 }); ws.forEach(w => io.observe(w)); } },
     ],
   },
 ];
@@ -1156,7 +1485,7 @@ function quizTeeth(el) {
     requestAnimationFrame(fr); box.classList.remove('pulse'); void box.offsetWidth; box.classList.add('pulse'); };
   const dots = () => `<div class="qdots">${QZ.map((_, i) => `<i class="${i < step ? 'd' : i === step ? 'c' : ''}"></i>`).join('')}</div>`;
   const draw = () => { const done = step >= 7;
-    pane.innerHTML = done ? `<p class="lab">Your smile</p><h3 class="qq">Would you change anything?</h3><div class="qsum">${QZ.map((q, i) => `<button type="button" data-e="${i}"><small>${q[0]}</small>${q[2][ans[i]][0]}</button>`).join('')}</div><div class="row" style="margin-top:16px"><a class="btn b-gold" href="#pk-form">Bring this to my free consult</a></div>`
+    pane.innerHTML = done ? `<p class="lab">Your smile</p><h3 class="qq">Would you change anything?</h3><div class="qsum">${QZ.map((q, i) => `<button type="button" data-e="${i}"><small>${q[0]}</small>${q[2][ans[i]][0]}</button>`).join('')}</div><div class="row" style="margin-top:16px"><a class="btn b-gold" href="#pk-form">Bring this to my visit</a></div>`
       : `<p class="lab">Question ${step + 1} of 7 · ${QZ[step][0]}</p><h3 class="qq">${QZ[step][1]}</h3><div class="qa2">${QZ[step][2].map((a, k) => `<button type="button" data-a="${k}" aria-pressed="${ans[step] === k}">${a[0]}</button>`).join('')}</div>${dots()}${step ? '<button type="button" class="qback">← Back</button>' : ''}`;
     pane.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => { ans[step] = +b.dataset.a; b.setAttribute('aria-pressed', 'true'); fsOpen(); render(); const was = step; setTimeout(() => { if (!document.body.contains(pane)) return; step = editing ? 7 : was + 1; editing = false; draw(); }, 420); }));
     pane.querySelectorAll('[data-e]').forEach(b => b.addEventListener('click', () => { step = +b.dataset.e; editing = true; draw(); }));
@@ -1183,9 +1512,9 @@ function quizMount(el, skin) {
   const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
   const dots = () => `<div class="qdots">${QZ.map((_, i) => `<i class="${i < step ? 'd' : i === step ? 'c' : ''}"></i>`).join('')}</div>`;
   const ask = i => `<p class="lab">Question ${i + 1} of 7 · ${QZ[i][0]}</p><h3 class="qq">${QZ[i][1]}</h3><div class="qa2">${QZ[i][2].map((a, k) => `<button type="button" data-a="${k}" aria-pressed="${ans[i] === k}">${a[0]}</button>`).join('')}</div>`;
-  const sum = () => `<p class="lab">Your smile</p><h3 class="qq">Would you change anything?</h3><div class="qsum">${QZ.map((q, i) => `<button type="button" data-e="${i}"><small>${q[0]}</small>${q[2][ans[i]][0]}</button>`).join('')}</div><div class="row" style="margin-top:16px"><a class="btn b-gold" href="#pk-form">Bring this to my consult</a></div>`;
+  const sum = () => `<p class="lab">Your smile</p><h3 class="qq">Would you change anything?</h3><div class="qsum">${QZ.map((q, i) => `<button type="button" data-e="${i}"><small>${q[0]}</small>${q[2][ans[i]][0]}</button>`).join('')}</div><div class="row" style="margin-top:16px"><a class="btn b-gold" href="#pk-form">Bring this to my visit</a></div>`;
   const draw = () => { const done = step >= 7;
-    if (skin === 4) pane.innerHTML = `<div class="qchat">${QZ.slice(0, Math.min(step, 7)).map((q, i) => `<div class="b q">${q[1]}</div><button type="button" class="b a" data-e="${i}">${q[2][ans[i]][0]}</button>`).join('')}${done ? '' : `<div class="b q">${QZ[step][1]}</div>`}</div>${done ? `<p class="lab" style="margin-top:14px">Would you change anything? Tap any answer above.</p><div class="row" style="margin-top:10px"><a class="btn b-gold" href="#pk-form">Bring this to my consult</a></div>` : `<div class="qa2">${QZ[step][2].map((a, k) => `<button type="button" data-a="${k}">${a[0]}</button>`).join('')}</div>`}`;
+    if (skin === 4) pane.innerHTML = `<div class="qchat">${QZ.slice(0, Math.min(step, 7)).map((q, i) => `<div class="b q">${q[1]}</div><button type="button" class="b a" data-e="${i}">${q[2][ans[i]][0]}</button>`).join('')}${done ? '' : `<div class="b q">${QZ[step][1]}</div>`}</div>${done ? `<p class="lab" style="margin-top:14px">Would you change anything? Tap any answer above.</p><div class="row" style="margin-top:10px"><a class="btn b-gold" href="#pk-form">Bring this to my visit</a></div>` : `<div class="qa2">${QZ[step][2].map((a, k) => `<button type="button" data-a="${k}">${a[0]}</button>`).join('')}</div>`}`;
     else pane.innerHTML = (done ? sum() : ask(step)) + (done ? '' : dots());
     pane.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => { const k = +b.dataset.a; ans[step] = k; Object.assign(tgt, QZ[step][2][k][1]); kick(); const was = step; setTimeout(() => { if (!document.body.contains(pane)) return; step = editing ? 7 : was + 1; editing = false; draw(); }, 420); b.setAttribute('aria-pressed', 'true'); }));
     pane.querySelectorAll('[data-e]').forEach(b => b.addEventListener('click', () => { step = +b.dataset.e; editing = ans.every(a => a !== null); draw(); }));
@@ -1199,7 +1528,7 @@ function quizImg(el) {
   const apply = () => { const n = ans.filter(a => a !== null).length; top.style.opacity = Math.pow(n / 7, .8); const sh = ans[0] == null ? 1 : [1, 1.04, 1.08][ans[0]]; top.style.filter = `brightness(${sh})`; box.classList.remove('pulse'); void box.offsetWidth; box.classList.add('pulse'); };
   const dots = () => `<div class="qdots">${QZ.map((_, i) => `<i class="${i < step ? 'd' : i === step ? 'c' : ''}"></i>`).join('')}</div>`;
   const draw = () => { const done = step >= 7;
-    pane.innerHTML = done ? `<p class="lab">Your smile</p><h3 class="qq">Would you change anything?</h3><div class="qsum">${QZ.map((q, i) => `<button type="button" data-e="${i}"><small>${q[0]}</small>${q[2][ans[i]][0]}</button>`).join('')}</div><div class="row" style="margin-top:16px"><a class="btn b-gold" href="#pk-form">Bring this to my free consult</a></div>`
+    pane.innerHTML = done ? `<p class="lab">Your smile</p><h3 class="qq">Would you change anything?</h3><div class="qsum">${QZ.map((q, i) => `<button type="button" data-e="${i}"><small>${q[0]}</small>${q[2][ans[i]][0]}</button>`).join('')}</div><div class="row" style="margin-top:16px"><a class="btn b-gold" href="#pk-form">Bring this to my visit</a></div>`
       : `<p class="lab">Question ${step + 1} of 7 · ${QZ[step][0]}</p><h3 class="qq">${QZ[step][1]}</h3><div class="qa2">${QZ[step][2].map((a, k) => `<button type="button" data-a="${k}" aria-pressed="${ans[step] === k}">${a[0]}</button>`).join('')}</div>${dots()}`;
     pane.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => { ans[step] = +b.dataset.a; b.setAttribute('aria-pressed', 'true'); apply(); const was = step; setTimeout(() => { if (!document.body.contains(pane)) return; step = editing ? 7 : was + 1; editing = false; draw(); }, 380); }));
     pane.querySelectorAll('[data-e]').forEach(b => b.addEventListener('click', () => { step = +b.dataset.e; editing = true; draw(); })); };
@@ -1229,6 +1558,7 @@ function dragRot(box, onMove, onTap) {
 }
 const RNOTE = '10 cases from the client’s own gallery. Written patient authorization is needed before any of them goes live.';
 
+const CTAB = (t, sub = '', btn = 'Book a visit') => `<div class="ctab"><div class="in"><div><h2 class="hd">${t}</h2>${sub ? `<p>${sub}</p>` : ''}</div><a class="btn b-gold" href="#pk-form" data-offer>${btn}</a></div></div>`;
 const S2 = [
   {
     id: 'designer', name: 'Smile quiz', ref: 'Neural Brain · your quiz idea',
@@ -1266,14 +1596,14 @@ const S2 = [
           const lay = () => { const R = Math.max(170, Math.min(330, box.clientWidth * .3)); ts.forEach(t => t.style.transform = `rotateY(${t.dataset.lon}deg) rotateX(${t.dataset.lat}deg) translateZ(${R}px)`); rot.style.transform = `translateZ(${-R * .25}px) rotateX(${ax}deg) rotateY(${ay}deg)`; };
           dragRot(box, (dx, dy) => { ay += dx * .3; ax = Math.max(-28, Math.min(28, ax - dy * .2)); lay(); }, lightbox); addEventListener('resize', lay); lay(); } },
       { name: 'Before and after cards', d: 'The simple one: swipe through cards, tap “Before” to compare. Nothing moves on its own.',
-        html: () => `<div class="sec"><div class="in">${head('Real patients', 'Results that speak', 'for themselves')}<div class="bacards" tabindex="0" aria-label="Results, swipe to see more">${RESULTS.map((r, i) => `<article class="ba"><div class="ph" role="button" tabindex="0" aria-pressed="false" aria-label="${r}: show before">${img(rf(i, 'a'), r + ', after')}${img(rf(i, 'b'), r + ', before', 'cover bf')}<span class="bst" aria-hidden="true"><i>After</i><i>Before</i></span><span class="bhint"><span class="hv">Hover to see before</span><span class="tp">Tap to see before</span></span></div><div class="meta"><b>${r}</b></div></article>`).join('')}</div><div class="rnav"><div class="dots"></div><div class="arr"><button type="button" class="rprev" aria-label="Previous result">←</button><button type="button" class="rnext" aria-label="Next result">→</button></div></div><p class="fine" style="margin-top:14px">${typeof FINAL !== 'undefined' ? 'Real patients of our practice. Individual results vary.' : RNOTE}</p></div></div>`,
+        html: () => `<div class="sec"><div class="in">${head('Real patients', 'Before', 'and after')}<div class="bacards" tabindex="0" aria-label="Results, swipe to see more">${RESULTS.map((r, i) => `<article class="ba"><div class="ph" role="button" tabindex="0" aria-pressed="false" aria-label="${r}: show before">${img(rf(i, 'a'), r + ', after')}${img(rf(i, 'b'), r + ', before', 'cover bf')}<span class="bst" aria-hidden="true"><i>After</i><i>Before</i></span><span class="bhint"><span class="hv">Hover to see before</span><span class="tp">Tap to see before</span></span></div><div class="meta"><b>${r}</b></div></article>`).join('')}</div><div class="rnav"><div class="dots"></div><div class="arr"><button type="button" class="rprev" aria-label="Previous result">←</button><button type="button" class="rnext" aria-label="Next result">→</button></div></div><p class="fine" style="margin-top:14px">${typeof FINAL !== 'undefined' ? 'Real patients of our practice. Individual results vary.' : RNOTE}</p></div></div>`,
         init: el => { railInit(el, '.bacards'); el.querySelectorAll('.ba').forEach(c => { const ph = c.querySelector('.ph'), set = on => { c.classList.toggle('show', on); ph.setAttribute('aria-pressed', String(on)); };
           ph.addEventListener('click', () => set(!c.classList.contains('show'))); ph.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); set(!c.classList.contains('show')); } }); }); } },
     ],
   },
   {
     id: 'offer2', name: 'Offer block (middle)', ref: 'Gia’s note: mention the offer twice',
-    v: [{ name: 'Photo and offer', d: 'Mid-page reminder: free consult and 50% off the first cleaning, with the waiting room photo.',
+    v: [{ name: 'Schedule button band', d: 'One line and one button.', html: () => CTAB('Start with a $159 new patient visit', 'A $530 value. Talk through your smile goals at the same appointment.', 'Claim offer') }, { name: 'Photo and offer', d: 'Mid-page reminder: free consult and 50% off the first cleaning, with the waiting room photo.',
       html: () => `<div class="sec offer2"><div class="in"><div class="offer-in"><div class="oph">${img('waiting.webp', 'The Parmer Lane waiting room')}</div><div class="otx"><p class="eb">(New patients at Parmer Lane)</p><h2 class="hd">Start with a <em>free</em> consult.</h2><p class="oq2">“With 30 years of experience, we know how to deliver long-lasting cosmetic results that match your look and personality. Talk to our doctors about what we can do for you.”</p><ul class="plain"><li>Your consultation is free.</li><li>First visit? Take 50% off your first cleaning.</li></ul><div class="row"><a class="btn b-gold" href="#pk-form" data-offer>Claim my offer</a><a class="btn b-line" href="tel:5128351924">Call ${TEL}</a></div></div></div></div></div>` }],
   },
 ];
@@ -1316,7 +1646,7 @@ const FORMF = (id) => `<form class="form" novalidate onsubmit="event.preventDefa
   <label for="${id}e">Email<input id="${id}e" type="email" autocomplete="email"></label>
   <label for="${id}i">What are you interested in?<select id="${id}i"><option>Veneers</option><option>Whitening</option><option>Clear aligners</option><option>Dental implants</option><option>Crowns</option><option>Not sure yet</option></select></label>
   <label class="ck" for="${id}s"><input id="${id}s" type="checkbox"><span>I agree to receive text messages from Austin Lifetime Dental LLLP about my appointment request. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span></label>
-  <button class="btn b-gold" type="submit">Request my consult</button><p class="ok fine" hidden>Draft only: the form is not connected yet.</p></form>`;
+  <button class="btn b-gold" type="submit">Request my $159 visit</button><p class="ok fine" hidden>Draft only: the form is not connected yet.</p></form>`;
 const dotsInit = (el, sel) => { const row = el.querySelector(sel), cs = [...row.children], dots = el.querySelector('.dots'); dots.innerHTML = cs.map((_, i) => `<button type="button" aria-label="Go to ${i + 1}"></button>`).join(''); const ds = [...dots.children];
   ds.forEach((d, i) => d.addEventListener('click', () => row.scrollTo({ left: cs[i].offsetLeft - row.offsetLeft, behavior: 'smooth' }))); const mark = () => { const c = row.scrollLeft + row.clientWidth / 2; let k = 0, m = 1e9; cs.forEach((x, i) => { const d = Math.abs(x.offsetLeft - row.offsetLeft + x.offsetWidth / 2 - c); if (d < m) { m = d; k = i; } }); ds.forEach((d, i) => d.setAttribute('aria-current', String(i === k))); }; row.addEventListener('scroll', () => requestAnimationFrame(mark)); mark(); };
 const flipInit = el => el.querySelectorAll('.flip').forEach(f => f.addEventListener('click', () => f.setAttribute('aria-pressed', String(f.getAttribute('aria-pressed') !== 'true'))));
@@ -1327,10 +1657,10 @@ const S3 = [
     id: 'tech', name: 'Technology', ref: 'LiquidGlass FlipCard',
     v: [
       { name: 'Illustrated cards, no flip', d: 'Each tool as a soft 3D illustration, centred, with its name and one line under it. Swipe on phones.',
-        html: () => `<div class="sec"><div class="in">${head('Technology', 'Planned digitally,', 'before anything begins')}<div class="over tover tplain"><div class="tgrid">${TECH.map((t, i) => `<article class="tcard"><div class="ill">${img(TILL[i], '', 'cover')}</div><div class="tx"><span class="lab">0${i + 1} · ${TK[i]}</span><h3>${t[0]}</h3><p>${t[1]}</p></div></article>`).join('')}</div><div class="dots"></div></div></div></div>`,
+        html: () => `<div class="sec"><div class="in">${head('Technology', 'The technology', 'we use')}<div class="over tover tplain"><div class="tgrid">${TECH.map((t, i) => `<article class="tcard"><div class="ill">${img(TILL[i], '', 'cover')}</div><div class="tx"><span class="lab">0${i + 1} · ${TK[i]}</span><h3>${t[0]}</h3><p>${t[1]}</p></div></article>`).join('')}</div><div class="dots"></div></div></div></div>`,
         init: el => railInit(el, '.tgrid') },
       { name: 'Photo grid with captions', d: 'Four photos of the actual equipment in a tidy grid, one line under each.',
-        html: () => `<div class="sec deep"><div class="in">${head('Technology', 'Planned digitally,', 'before anything begins')}<div class="bento"><figure class="big">${img(TECH[2][2], '')}<figcaption><b>${TECH[2][0]}</b><span>${TECH[2][1]}</span></figcaption></figure>${[0, 1, 3].map(i => `<figure${i === 3 ? ' class="w2"' : ''}>${img(TECH[i][2], '')}<figcaption><b>${TECH[i][0]}</b><span>${TECH[i][1]}</span></figcaption></figure>`).join('')}</div></div></div>` },
+        html: () => `<div class="sec deep"><div class="in">${head('Technology', 'The technology', 'we use')}<div class="bento"><figure class="big">${img(TECH[2][2], '')}<figcaption><b>${TECH[2][0]}</b><span>${TECH[2][1]}</span></figcaption></figure>${[0, 1, 3].map(i => `<figure${i === 3 ? ' class="w2"' : ''}>${img(TECH[i][2], '')}<figcaption><b>${TECH[i][0]}</b><span>${TECH[i][1]}</span></figcaption></figure>`).join('')}</div></div></div>` },
       { name: 'Square tiles (same as services)', d: 'Repeats the IGOR tile look so services and technology feel like one family.',
         html: () => `<div class="sec"><div class="in">${head('', 'Technology', '')}<div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">${TECH.map(t => `<div class="tile"><div class="ph">${img(t[2], t[0])}</div><h3>${t[0]}</h3><p>${t[1]}</p></div>`).join('')}</div></div></div>` },
     ],
@@ -1339,8 +1669,8 @@ const S3 = [
     id: 'team', name: 'Team', ref: 'LiquidGlass FlipCard · IGOR',
     v: [
       { name: 'Doctor cards with a short bio', d: 'Photo with a glass name plate and two lines about each doctor underneath. Swipe on phones.',
-        html: () => `<div class="sec"><div class="in">${head('The Parmer Lane team', 'Doctors you know', 'and trust')}<div class="dgrid">${DOCS.map(d => `<article class="dcard"><div class="ph">${img(d[3], d[0], 'cover', 'style="object-position:50% 14%"')}<div class="glass nm"><h3>${d[0]}</h3><p>${d[1]}</p></div></div><p class="bio">${d[4] || d[2]}</p></article>`).join('')}</div><div class="dots"></div></div></div>`,
-        init: el => railInit(el, '.dgrid') },
+        html: () => `<div class="sec"><div class="in">${head('The Parmer Lane team', 'Doctors you know', 'and trust')}<div class="dgrid t-b">${DOCS.map(d => `<article class="dcard"><div class="ph">${img(d[3], d[0], 'cover', 'style="object-position:50% 14%"')}<div class="glass nm"><h3>${d[0]}</h3><p>${d[1]}</p></div></div><p class="sl">${d[2]} <span class="more">More <i aria-hidden="true">+</i></span></p><p class="bio">${d[4] || d[2]}</p></article>`).join('')}</div><div class="dbio" hidden aria-live="polite"></div><div class="dots"></div></div></div>`,
+        init: el => { railInit(el, '.dgrid'); const pn = el.querySelector('.dbio'), cs = [...el.querySelectorAll('.dcard')]; cs.forEach(c => { c.tabIndex = 0; const go = () => { if (!matchMedia('(min-width:900px)').matches) return; const was = c.classList.contains('on'); cs.forEach(x => x.classList.remove('on')); if (was) { pn.hidden = true; return; } c.classList.add('on'); pn.innerHTML = `<h3>${c.querySelector('h3').textContent}</h3><p>${c.querySelector('.bio').textContent}</p>`; pn.hidden = false; pn.classList.remove('sw'); void pn.offsetWidth; pn.classList.add('sw'); }; c.addEventListener('click', go); c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } }); }); } },
       { name: 'Team photo with three statements (IGOR)', d: 'Like IGOR’s “About”: big photo on one side, three plain statements on the other.',
         html: () => `<div class="sec"><div class="in">${head('', 'About', '')}<div class="about"><div>
           <div class="blk"><h3>Who we are</h3><p>A locally owned practice. For 30 years, Austin Lifetime Dental has cared for families across our community.</p></div>
@@ -1370,7 +1700,7 @@ const S3 = [
         html: () => `<div class="sec"><div class="in"><p class="eb">(Google reviews)</p><div class="q1" tabindex="0" aria-label="Reviews, swipe to see more">${REV.map(r => `<blockquote>“${r}”<cite><span class="stars">★★★★★</span> &nbsp;Google review</cite></blockquote>`).join('')}</div><div class="dots"></div></div></div>`,
         init: el => dotsInit(el, '.q1') },
       { name: 'Review cards you can swipe', d: 'A row of review cards; swipe on phones, arrows on desktop. Reviewer first names as Google shows them.',
-        html: () => `<div class="sec"><div class="in">${head('Google reviews', 'What Parmer', 'patients say')}<a class="grate" href="${MAPS}" target="_blank" rel="noopener" aria-label="Rated 4.9 out of 5 from over 800 Google reviews"><b>4.9</b><span class="gst" aria-hidden="true">★★★★★</span><span>(800+)</span></a><div class="rrail">${REVS.map(r => `<article class="rcard"><span class="stars" aria-label="5 stars">★★★★★</span><p>“${r.t}”</p><cite>${r.n}${r.x ? ` · ${r.x}` : ''}</cite></article>`).join('')}</div><div class="rnav"><div class="dots"></div><div class="arr"><button type="button" class="rprev" aria-label="Previous review">←</button><button type="button" class="rnext" aria-label="Next review">→</button></div></div><div class="row" style="margin-top:18px"><a class="btn b-line" href="${MAPS}" target="_blank" rel="noopener">All Google reviews</a></div></div></div>`,
+        html: () => `<div class="sec"><div class="in">${head('Google reviews', 'What our', 'patients say')}<a class="grate" href="${MAPS}" target="_blank" rel="noopener" aria-label="Rated 4.9 out of 5 from over 800 Google reviews"><b>4.9</b><span class="gst" aria-hidden="true">★★★★★</span><span>(800+)</span></a><div class="rrail">${REVS.map(r => `<article class="rcard"><span class="stars" aria-label="5 stars">★★★★★</span><p>“${r.t}”</p><cite>${r.n}${r.x ? ` · ${r.x}` : ''}</cite></article>`).join('')}</div><div class="rnav"><div class="dots"></div><div class="arr"><button type="button" class="rprev" aria-label="Previous review">←</button><button type="button" class="rnext" aria-label="Next review">→</button></div></div><div class="row" style="margin-top:18px"><a class="btn b-line" href="${MAPS}" target="_blank" rel="noopener">All Google reviews</a></div></div></div>`,
         init: el => railInit(el, '.rrail') },
       { name: 'Quote beside a round photo', d: 'One strong quote next to a round photo of a team member.',
         html: () => `<div class="sec"><div class="in"><div class="rsplit"><div class="ph">${img('smile1.webp', '')}</div><div><p class="eb">(Google review)</p><div class="q1"><blockquote>“${REV[0]}”<cite><span class="stars">★★★★★</span></cite></blockquote></div><div class="row" style="margin-top:22px"><a class="btn b-line" href="${MAPS}" target="_blank" rel="noopener">All Google reviews</a></div></div></div></div></div>` },
@@ -1380,12 +1710,12 @@ const S3 = [
     id: 'visit', name: 'Visit us', ref: 'OperatorX · LiquidGlass',
     v: [
       { name: 'Three panels that open, with a simple map', d: 'Three panels side by side; the one under the mouse grows. The first is a minimal map that opens Google Maps.',
-        html: () => `<div class="sec"><div class="in">${head('Visit us', 'Parmer Lane', 'and Mopac')}<div class="acc3">
-          <a class="pn map" href="${MAPS}" target="_blank" rel="noopener" aria-label="Open in Google Maps"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#e9eef0"/><path d="M-10 190 L410 120" stroke="#fff" stroke-width="16"/><path d="M250 -10 C240 90 270 200 255 310" stroke="#fff" stroke-width="20"/><path d="M-10 60 L410 30M60 -10 L110 310M-10 260 L410 240M340 -10 L370 310" stroke="#fff" stroke-width="5"/><path d="M0 300 L0 250 Q60 235 90 300Z" fill="#cfe2d4"/><text x="118" y="158" font-size="11" fill="#5d6b71" font-family="monospace" transform="rotate(-9.500 118 158)">W PARMER LN</text><text x="268" y="70" font-size="11" fill="#5d6b71" font-family="monospace" transform="rotate(84 268 70)">MOPAC</text><circle cx="196" cy="156" r="22" fill="#EBB63D" opacity=".3"/><circle cx="196" cy="156" r="9" fill="#2B3A42"/><circle cx="196" cy="156" r="3.500" fill="#fff"/></svg><div class="cap"><span class="lab">Find us</span><b>2206 W Parmer Ln</b><span>Austin, TX 78727 · Open in Google Maps ↗</span></div></a>
+        html: () => `<div class="sec"><div class="in">${head('Visit us', 'Our Parmer Lane', 'office')}<div class="acc3">
+          <a class="pn map" href="${MAPS}" target="_blank" rel="noopener" aria-label="Open in Google Maps"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#e9eef0"/><path d="M-10 190 L410 120" stroke="#fff" stroke-width="16"/><path d="M250 -10 C240 90 270 200 255 310" stroke="#fff" stroke-width="20"/><path d="M-10 60 L410 30M60 -10 L110 310M-10 260 L410 240M340 -10 L370 310" stroke="#fff" stroke-width="5"/><path d="M0 300 L0 250 Q60 235 90 300Z" fill="#cfe2d4"/><text x="118" y="158" font-size="11" fill="#5d6b71" font-family="monospace" transform="rotate(-9.500 118 158)">W PARMER LN</text><circle cx="196" cy="156" r="22" fill="#EBB63D" opacity=".3"/><circle cx="196" cy="156" r="9" fill="#2B3A42"/><circle cx="196" cy="156" r="3.500" fill="#fff"/></svg><div class="cap"><span class="lab">Find us</span><b>2206 W Parmer Ln</b><span>Austin, TX 78727 · Open map ↗</span></div></a>
           <div class="pn"><div class="cap"><span class="lab">Hours</span><b>Mon–Thu 7:30 am – 5 pm</b><span>Friday 7:30 am – 3 pm</span></div></div>
           <a class="pn dk" href="tel:5128351924"><div class="cap"><span class="lab">Call us</span><b>${TEL}</b><span>Tap to call the Parmer Lane office</span></div></a></div></div></div>` },
       { name: 'Building photo and an info card', d: 'Photo of the office (opens Google Maps) with address, hours and two buttons beside it.',
-        html: () => `<div class="sec"><div class="in"><div class="visit"><a class="ph" href="${MAPS}" target="_blank" rel="noopener">${img('office.webp', 'The Austin Lifetime Dental office')}</a><div class="cd"><p class="eb">(Visit us)</p>${H('Parmer Lane', 'and Mopac').replace('class="hd"', 'class="hd" style="font-size:clamp(28px,3.4vw,40px)"')}<p>2206 W Parmer Ln, Austin, TX 78727</p><dl class="hrs"><dt>Mon–Thu</dt><dd>7:30 am – 5:00 pm</dd><dt>Fri</dt><dd>7:30 am – 3:00 pm</dd></dl><div class="row"><a class="btn b-gold" href="tel:5128351924">Call ${TEL}</a><a class="btn b-line" href="${MAPS}" target="_blank" rel="noopener">Directions</a></div></div></div></div></div>` },
+        html: () => `<div class="sec"><div class="in"><div class="visit"><a class="ph" href="${MAPS}" target="_blank" rel="noopener">${img('office.webp', 'The Austin Lifetime Dental office')}</a><div class="cd"><p class="eb">(Visit us)</p>${H('Our Parmer Lane', 'office').replace('class="hd"', 'class="hd" style="font-size:clamp(28px,3.4vw,40px)"')}<p>2206 W Parmer Ln, Austin, TX 78727</p><dl class="hrs"><dt>Mon–Thu</dt><dd>7:30 am – 5:00 pm</dd><dt>Fri</dt><dd>7:30 am – 3:00 pm</dd></dl><div class="row"><a class="btn b-gold" href="tel:5128351924">Call ${TEL}</a><a class="btn b-line" href="${MAPS}" target="_blank" rel="noopener">Directions</a></div></div></div></div></div>` },
       { name: 'The address in huge type', d: 'No photo. The street address is the headline, with hours and phone in three small columns.',
         html: () => `<div class="sec"><div class="in"><p class="eb">(Visit us)</p><p class="addr">2206 W Parmer Ln <span>Austin, TX 78727</span></p><div class="vrow"><div><p class="lab">Hours</p><dl class="hrs" style="margin-top:8px"><dt>Mon–Thu</dt><dd>7:30 am – 5:00 pm</dd><dt>Fri</dt><dd>7:30 am – 3:00 pm</dd></dl></div><div><p class="lab">Where</p><p style="margin:8px 0 0">At Parmer Lane and Mopac, north of the Domain.</p></div><div><p class="lab">Contact</p><div class="row" style="margin-top:8px"><a class="btn b-gold" href="tel:5128351924">Call ${TEL}</a><a class="btn b-line" href="${MAPS}" target="_blank" rel="noopener">Directions</a></div></div></div></div></div>` },
       { name: 'Full photo with a glass card', d: 'The building fills the section and the details sit on a frosted card.',
@@ -1402,10 +1732,15 @@ const S3 = [
       { name: 'Questions that flip to the answer', d: 'Tap a question and the card flips to show only that question and its answer. One tap anywhere on the answer flips back.',
         html: () => `<div class="sec deep"><div class="in fone">${head('Questions', 'Ask us', 'anything')}<div class="fflip"><div class="ffi"><div class="ffa"><div class="chips" role="group" aria-label="Questions">${FAQS.map((f, i) => `<button type="button" data-q="${i}">${f[0]}</button>`).join('')}</div></div><div class="ffb" aria-live="polite"><button type="button" class="ffback">← All questions</button><h3></h3><p class="ans"></p></div></div></div></div></div>`,
         init: el => { const w = el.querySelector('.fflip'), b = el.querySelector('.ffb'), a = el.querySelector('.ffa');
-          const fit = () => { w.style.height = Math.max(a.scrollHeight, w.classList.contains('on') ? b.scrollHeight : 0) + 'px'; };
-          el.querySelectorAll('.ffa [data-q]').forEach(x => x.addEventListener('click', () => { const f = FAQS[+x.dataset.q]; b.querySelector('h3').textContent = f[0]; b.querySelector('.ans').textContent = f[1]; w.classList.add('on'); a.inert = true; b.inert = false; fit(); setTimeout(() => b.querySelector('.ffback').focus({ preventScroll: true }), 350); }));
-          b.addEventListener('click', () => { if (!w.classList.contains('on')) return; w.classList.remove('on'); a.inert = false; b.inert = true; fit(); }); /* tap anywhere on the answer to flip back */
+          const wide = () => matchMedia('(min-width:900px)').matches;
+          const fit = () => { w.style.height = wide() ? '' : Math.max(a.scrollHeight, w.classList.contains('on') ? b.scrollHeight : 0) + 'px'; if (wide()) { a.inert = false; b.inert = false; if (!b.querySelector('h3').textContent) pick(0); } };
+          const pick = i => { const f = FAQS[i]; el.querySelectorAll('.ffa [data-q]').forEach(x => x.setAttribute('aria-pressed', String(+x.dataset.q === i))); b.classList.remove('sw'); void b.offsetWidth; b.classList.add('sw'); b.querySelector('h3').textContent = f[0]; b.querySelector('.ans').textContent = f[1]; };
+          el.querySelectorAll('.ffa [data-q]').forEach(x => x.addEventListener('click', () => { if (wide()) return pick(+x.dataset.q); const f = FAQS[+x.dataset.q]; b.querySelector('h3').textContent = f[0]; b.querySelector('.ans').textContent = f[1]; w.classList.add('on'); a.inert = true; b.inert = false; fit(); setTimeout(() => b.querySelector('.ffback').focus({ preventScroll: true }), 350); }));
+          b.addEventListener('click', () => { if (wide() || !w.classList.contains('on')) return; w.classList.remove('on'); a.inert = false; b.inert = true; fit(); }); /* tap anywhere on the answer to flip back */
           b.inert = true; addEventListener('resize', fit); requestAnimationFrame(fit); } },
+      { name: 'Question cards that flip', d: 'Only questions show. Tap a card to see its answer, tap again to flip back.',
+        html: () => `<div class="faq-m">${S3.find(x => x.id === 'faq').v.find(v => v.name.startsWith('Questions that flip')).html()}</div><div class="faq-d"><div class="sec tint"><div class="in">${head('Questions', 'Ask us', 'anything')}<div class="fqf">${FAQS.map((f, i) => `<button type="button" class="fqfc" aria-pressed="false" aria-label="${f[0]}"><span class="fi"><span class="ff"><b>${f[0]}</b><i aria-hidden="true">+</i></span><span class="fb"><small>${f[0]}</small><span>${f[1]}</span></span></span></button>`).join('')}</div></div></div></div>`,
+        init: el => { el.querySelectorAll('.fqfc').forEach(b => b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')))); S3.find(x => x.id === 'faq').v.find(v => v.name.startsWith('Questions that flip')).init(el.querySelector('.faq-m')); } },
       { name: 'Swipe cards', d: 'Each question and answer on its own card in one row. Swipe on phones, arrows on desktop. About a third of the height.',
         html: () => `<div class="sec"><div class="in">${head('Questions', 'Good to know', 'before your visit')}<div class="fqrail">${FAQS.map((f, i) => `<article class="fq"><i>0${i + 1}</i><h3>${f[0]}</h3><p>${f[1]}</p></article>`).join('')}</div><div class="rnav"><div class="dots"></div><div class="arr"><button type="button" class="rprev" aria-label="Previous question">←</button><button type="button" class="rnext" aria-label="Next question">→</button></div></div></div></div>`,
         init: el => railInit(el, '.fqrail') },
@@ -1418,7 +1753,8 @@ const S3 = [
     id: 'form', name: 'Closing and form', ref: 'OperatorX · Text Video Mask',
     v: [
       { name: 'Free consult and the form', d: 'Light section. The offer is the headline, a gold ticket for the cleaning, the form beside it.',
-        html: () => `<div class="sec fsec"><div class="in"><div class="pbox fbox"><div class="ptop"><p class="eb">(Parmer Lane offer)</p><h3>Your consultation is free.</h3><p class="pof"><b>First visit?</b> Take 50% off your first cleaning.</p><p class="pq">“With 30 years of experience, we know how to deliver long-lasting cosmetic results that match your look and personality. Talk to our doctors about what we can do for you.”</p></div>${FORMF('f1')}<p class="fcall"><span>Prefer to talk?</span><a class="fcb" href="tel:5128351924"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call ${TEL}</a></p></div></div></div>` },
+        html: () => `<div class="sec fsec"><div class="in"><div class="pbox fbox"><div class="ptop"><p class="eb">(New patient offer)</p><h3>$159 new patient visit</h3><p class="pof"><b>A $530 value.</b> Exam, full X-rays, oral cancer screening and a routine cleaning.</p><p class="pq">Start with a $159 new patient visit and talk through your smile goals at the same appointment.</p><p class="pfine">Adult new patients only. A routine cleaning is included for healthy gums; a deeper cleaning costs extra. You can use insurance instead of the flat fee.</p></div>${FORMF('f1')}<p class="fcall"><span>Prefer to talk?</span><a class="fcb" href="tel:5128351924"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call ${TEL}</a></p></div></div></div>`,
+        init: () => document.body.classList.add('join-b') },
       { name: 'Video letters, then the form', d: 'Their tagline with footage inside the letters, the form right under it.',
         html: () => `<div class="sec deep" style="text-align:center"><div class="in"><div class="maskwrap"><video src="${A}mask.mp4" autoplay muted loop playsinline></video><p class="mtxt" style="font-size:clamp(40px,10.5vw,150px)">Smile for<br>a lifetime</p></div><p class="lede" style="margin:22px auto 26px">Start today. Our Parmer Lane team will reach out to set up your consult.</p><div style="max-width:560px;margin:0 auto;text-align:left">${FORMF('f2')}</div></div></div>` },
       { name: 'A sentence you fill in', d: 'No form box. The visitor completes one sentence: name, interest, phone.',
@@ -1680,12 +2016,12 @@ const OFFER_FORM = id => `<form class="form pform" novalidate onsubmit="event.pr
   <div class="r2"><label for="${id}n">First name<input id="${id}n" autocomplete="given-name"></label><label for="${id}p">Mobile phone<input id="${id}p" type="tel" inputmode="tel" autocomplete="tel"></label></div>
   <label for="${id}i">What are you interested in?<select id="${id}i"><option>Veneers</option><option>Whitening</option><option>Clear aligners</option><option>Dental implants</option><option>Crowns</option><option>A cleaning</option><option>Not sure yet</option></select></label>
   <label class="ck" for="${id}s"><input id="${id}s" type="checkbox"><span>I agree to receive text messages from Austin Lifetime Dental LLLP about my appointment request. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span></label>
-  <button class="btn b-gold" type="submit">Claim my free consult</button><p class="ok fine" hidden>Draft only: the form is not connected yet.</p></form>`;
+  <button class="btn b-gold" type="submit">Claim my $159 visit</button><p class="pnote">Adult new patients. Deeper cleaning costs extra. Insurance welcome.</p><p class="ok fine" hidden>Draft only: the form is not connected yet.</p></form>`;
 function openOffer() {
   if (document.querySelector('.pop')) return;
   const last = document.activeElement, d = document.createElement('div'); d.className = 'pop'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-modal', 'true'); d.setAttribute('aria-labelledby', 'popt');
   d.innerHTML = `<div class="pbox" tabindex="-1"><button type="button" class="px" aria-label="Close">×</button>
-    <div class="ptop"><p class="eb">(Parmer Lane offer)</p><h3 id="popt">Your consultation is free.</h3><p class="pof"><b>First visit?</b> Take 50% off your first cleaning.</p><p class="pq">“With 30 years of experience, we know how to deliver long-lasting cosmetic results that match your look and personality. Talk to our doctors about what we can do for you.”</p></div>${OFFER_FORM('pp')}</div>`;
+    <div class="ptop pshort"><h3 id="popt">Your first visit, $159</h3><p class="pof">Exam, X-rays and cleaning. <b>A $530 value.</b></p></div>${OFFER_FORM('pp')}</div>`;
   const close = () => { document.documentElement.classList.remove('poplock'); d.classList.remove('on'); setTimeout(() => d.remove(), 320); document.removeEventListener('keydown', key); if (last && last.focus) last.focus(); };
   const key = e => { if (e.key === 'Escape') close(); if (e.key === 'Tab') { const f = [...d.querySelectorAll('button,input,select,a')].filter(x => !x.hidden && x.offsetParent); if (!f.length) return; const i = f.indexOf(document.activeElement); if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && (i < 0 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); } } };
   d.addEventListener('click', e => { if (e.target === d || e.target.closest('.px')) close(); }); document.addEventListener('keydown', key);
@@ -1727,9 +2063,18 @@ document.addEventListener('click', e => { const a = e.target.closest('a[data-leg
   document.body.appendChild(w); document.documentElement.classList.add('poplock'); w.querySelector('button').focus(); });
 
 
+/* in-page links scroll without changing the address, so reopening the page always starts at the top */
+(function () {
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  try { if (/^#pk-/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+  const top = () => { if (!/y30=|popup-test/.test(location.href)) window.scrollTo(0, 0); };
+  top(); addEventListener('load', top); addEventListener('pageshow', top);
+  document.addEventListener('click', e => { const a = e.target.closest('a[href^="#pk-"]'); if (!a || a.hasAttribute('data-offer') || e.defaultPrevented) return; const t = document.querySelector(a.getAttribute('href')); if (!t) return; e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+})();
+
 /* Picker core: renders sections, switches options, saves picks to the artifact db */
-const SECTIONS = [...S1, ...S2, ...S3].filter(s => s.id !== 'process');
-{ const r = SECTIONS.findIndex(s => s.id === 'results'), d = SECTIONS.findIndex(s => s.id === 'designer'); if (r > d) SECTIONS.splice(d, 0, SECTIONS.splice(r, 1)[0]); }
+const SECTIONS = [...S1, ...S2, ...S3].filter(s => !['process', 'offer1', 'cost'].includes(s.id));
+{ const r = SECTIONS.findIndex(s => s.id === 'results'), d = SECTIONS.findIndex(s => s.id === 'designer'); if (r > d) SECTIONS.splice(d, 0, SECTIONS.splice(r, 1)[0]); { const y = SECTIONS.findIndex(s => s.id === 'years'), h = SECTIONS.findIndex(s => s.id === 'hero'); SECTIONS.splice(h + 1, 0, SECTIONS.splice(y, 1)[0]); } }
 SECTIONS.forEach(s => { s.v = s.v.filter(v => !v.hide); });
 const TONES = { a: ['Light capitals', 'IGOR'], b: ['Bold two-tone capitals', 'OperatorX'], c: ['Tight lowercase, one hand-written word', 'Monoform'] };
 const REFS = [
@@ -1797,7 +2142,7 @@ function save() {
   clearTimeout(saveT); $('#sync').textContent = 'Saving…';
   saveT = setTimeout(async () => { ST.updated = new Date().toISOString(); try { await ref.set(JSON.parse(JSON.stringify(ST))); $('#sync').textContent = '☁️ Synced to Claude'; } catch (e) { $('#sync').textContent = 'Not synced, saved on this device'; } }, 700);
 }
-ST.tone='c'; ST.picks={"nav": 2, "hero": 1, "offer1": 1, "offer2": 1, "years": 6, "services": 2, "designer": 1, "process": 2, "results": 3, "tech": 1, "team": 1, "cost": 2, "reviews": 2, "visit": 1, "faq": 3, "form": 1}; const FINAL=true; { const _y = (location.hash + location.search).match(/y30=([1-6])/); if (_y) ST.picks.years = +_y[1]; }
+ST.tone='c'; ST.picks={"nav": 2, "hero": 4, "offer1": 1, "offer2": 1, "cta2": 1, "years": 7, "services": 2, "designer": 1, "process": 2, "results": 3, "tech": 1, "team": 1, "cost": 2, "reviews": 2, "visit": 1, "faq": 4, "form": 1}; const FINAL=true; { const _y = (location.hash + location.search).match(/y30=([1-6])/); if (_y) ST.picks.years = +_y[1]; }
 build(); document.body.classList.add('preview','final'); document.querySelector('.top').hidden=true; revealInit(); fabInit(); (function(){var n=document.getElementById('intro');if(!n)return;document.body.classList.add('introing');var done=function(){document.body.classList.remove('introing');if(n.parentNode)n.remove();};n.addEventListener('click',function(){n.style.animation='introFade .35s ease forwards';setTimeout(done,370);});setTimeout(done,2650);})(); popupInit(/[?&#]popup-test/.test(location.href) ? 1500 : 60000, /[?&#]popup-test/.test(location.href));
 (async () => {
   let db = null; try { db = window.claude ? await window.claude.use('db') : null; } catch (e) {}
