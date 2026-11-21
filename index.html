@@ -1198,6 +1198,199 @@ body.join-a #pk-form,body.join-a #st-form,body.join-a #st-form>div{background:tr
 .tyo .b-gold{background:var(--gold);color:#1a2327;border:0;backdrop-filter:none}.tyo .tyb{background:none;color:#fff;border:1px solid rgba(255,255,255,.55);font-family:inherit}
 .form [aria-invalid]{border-color:#c0392b!important;box-shadow:0 0 0 3px rgba(192,57,43,.15)}
 @media(prefers-reduced-motion:reduce){.tyo{animation:none}}
+
+.ofs.ofx{display:grid;grid-template-columns:minmax(220px,1fr) 2.4fr auto;align-items:center;gap:10px 32px;padding:22px 26px}
+.ofx .oft{display:flex;flex-direction:column;gap:4px}.ofx .oft>b{font-size:22px;letter-spacing:-.02em;line-height:1.15}.ofx .oft>span{font-size:14.5px;color:var(--dim)}
+.ofx .ofl{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.ofx .ofl>span{font-size:13.5px;line-height:1.4;color:var(--dim);padding-left:14px;border-left:2px solid var(--gold)}
+.ofx .ofl b{display:block;font-family:inherit;font-size:14.5px;color:var(--ink);margin-bottom:2px}
+.ofx .off{grid-column:1/-1;font-size:12px;color:var(--dim);line-height:1.4}
+@media(max-width:1080px){.ofs.ofx{grid-template-columns:1fr auto}.ofx .ofl{grid-column:1/-1;grid-row:2}}
+@media(max-width:820px){.ofs.ofx{grid-template-columns:1fr;gap:14px;padding:22px 18px}.ofx .ofl{grid-template-columns:1fr;gap:12px;grid-row:auto}.ofx .oft>b{font-size:21px}.ofx .ofg{justify-self:start;background:var(--gold);color:#1a2327;padding:12px 20px;border-radius:99px;font-size:15px}}
+.ofx .oft>span,.ofx .ofl>span,.ofx .off{color:rgba(26,35,39,.72)}
+.ofs.ofx{margin-top:44px}
+@media(max-width:820px){.ofs.ofx{margin-top:32px;border-top:1px solid var(--line)}}
+
+.ofs.ofx.ofy{grid-template-columns:1fr auto;margin-top:72px;padding:26px 30px;gap:12px 32px}
+.ofy .oft{gap:8px}.ofy .oft>b{font-size:26px}.ofy .oft>span{font-size:16.5px;line-height:1.45;color:var(--ink)}
+.ofy .ofg{background:var(--gold);color:#1a2327;padding:14px 22px;border-radius:99px;font-size:15px}
+@media(max-width:820px){.ofs.ofx.ofy{grid-template-columns:1fr;margin-top:48px;padding:26px 18px;gap:16px}.ofy .oft>b{font-size:23px}.ofy .oft>span{font-size:16px}.ofy .ofg{justify-self:start}}
+
+/* design pass 21 Nov: offer sits evenly between Why and Before/after; form card is one piece */
+#pk-years .sec{padding-bottom:0!important}
+#pk-years .ofs.ofy{margin-top:88px}
+#pk-results .sec{padding-top:88px!important}
+@media(min-width:900px){body.join-b #pk-form .fbox>.form{align-self:end}}
+@media(max-width:820px){
+  #pk-years .ofs.ofy{margin:44px 0 0;border-radius:20px;background:var(--mist2);border:0;padding:24px 20px}
+  #pk-results .sec{padding-top:56px!important}
+}
+@media(min-width:900px){body.join-b #pk-form .fbox>.form{margin-bottom:0}}
+
+/* before/after rail: the edge where a card is cut off while scrolling stays rounded */
+.bawrap{position:relative}
+.bamask{position:absolute;inset:0 0 auto 0;display:flex;pointer-events:none;z-index:3;border-radius:var(--r);box-shadow:0 0 0 6px var(--paper)}
+.bamask::before{content:"";flex:none;width:min(420px,82%);aspect-ratio:3/2}
+@media(max-width:640px){.bamask::before{width:86%}}
+
+/* corner pass 21 Nov: one radius scale across the page (large cards 28, phone 24, small tiles 18, fields 12, buttons stay pills) */
+:root{--rc:28px;--rs:18px;--ri:12px}
+@media(max-width:820px){:root{--rc:24px}}
+#pk-years .ofs.ofy,
+.ba .ph,.bamask,
+.pcard,
+.qimg,.qimg .qc,
+.tcard,
+.dcard,.dcard .ph,
+.rcard,
+.acc3 .pn,
+.fqfc .ff,.fqfc .fb,.fqfc:focus-visible,
+.ffb,
+.pbox,.tyo .card{border-radius:var(--rc)!important}
+#pk-tech .over{border-radius:40px}
+@media(max-width:900px){#pk-tech .over{border-radius:var(--rc)}}
+.dcard .glass.nm{border-radius:calc(var(--rc) - 6px)}
+@media(max-width:820px){.dcard .glass.nm{border-radius:calc(var(--rc) - 10px)}}
+@media(max-width:760px){.acc3 .pn:not(.map){border-radius:var(--rs)!important}}
+.form input,.form select,.form textarea{border-radius:var(--ri)}
+@media(min-width:900px){
+  body.join-b #pk-form .fbox>.form{border-radius:var(--rc) var(--rc) 0 0!important}
+  body.join-b #pk-form .fbox>.fcall{border-radius:0 0 var(--rc) var(--rc)!important}
+}
+@media(max-width:899px){
+  body.join-b #pk-form .fbox .form{border-radius:var(--rc) var(--rc) 0 0!important}
+  body.join-b #pk-form .fbox .fcall{border-radius:0 0 var(--rc) var(--rc)!important}
+}
+#pk-form .pbox.fbox{border-radius:0!important}
+@media(max-width:899px){.dcard{border-radius:0!important}}
+/* rail mask v2: paint only the four corner notches (shadow clipped to the photo area) */
+.bamask{overflow:hidden;border-radius:0!important;box-shadow:none}
+.bamask::after{content:"";position:absolute;inset:0;border-radius:var(--rc);box-shadow:0 0 0 60px var(--paper)}
+
+/* corner review fixes 21 Nov */
+/* hint pill: its inner span shared the hero's .hv class and got a black box */
+.bhint .hv{background:none;color:inherit;position:static;height:auto;min-height:0;overflow:visible}
+.bhint .hv::after{content:none}
+/* badges only on photos that are fully in view, so a cut photo never shows half a pill */
+.bst,.bhint{transition:opacity .3s}
+.bacards.io .ba:not(.full) .bst,.bacards.io .ba:not(.full) .bhint{opacity:0}
+/* phone: rail runs to the screen edges (no mask), the next photo keeps its own round corners */
+@media(max-width:640px){
+  .bamask{display:none}
+  .bacards{margin-inline:-18px;padding-inline:18px;scroll-padding-inline:18px}
+  .tgrid{padding-bottom:30px;margin-bottom:-22px}
+}
+/* desktop: the dark "Results" tile and the doctor bio panel join the scale */
+@media(min-width:821px){.why a.wy.go{border-radius:var(--rc);margin:14px 0}}
+@media(min-width:900px){.dbio:not([hidden]){border-radius:var(--rc)}}
+/* pop-up: no white fringe on the dark header's round corners */
+.pop .pbox{background:linear-gradient(var(--night),var(--night)) top/100% 40px no-repeat local,var(--card)}
+.pcard{box-shadow:0 -12px 32px -8px rgba(12,17,20,.22)}
+/* why grid: the four points share one row on desktop, the Results tile runs full width under them */
+@media(min-width:900px){
+  .why{grid-template-columns:repeat(4,1fr)}
+  .why a.wy.go{grid-column:1/-1;padding:44px 28px;margin:20px 0 0}
+  .why .wy:not(.go){border-bottom:0}
+  .wy b{font-size:clamp(40px,4.4vw,64px)}
+}
+@media(min-width:821px) and (max-width:899px){.why{grid-template-columns:1fr 1fr}.why a.wy.go{grid-column:1/-1}}
+
+/* Results block: five desktop variants to pick from (temporary switcher) */
+.gosw,.wy.go .gt,.wy.go .gth{display:none}
+@media(min-width:900px){
+  .gosw{display:flex;align-items:center;gap:8px;margin:0 0 18px;font:500 13px var(--body);color:var(--mute)}
+  .gosw button{border-radius:99px;border:1px solid var(--line);background:var(--card);font:600 13.5px var(--body);color:var(--ink);padding:8px 14px;cursor:pointer}
+  .gosw button[aria-pressed="true"]{background:var(--night);color:#fff;border-color:var(--night)}
+  .why[class*="gv-"] a.wy.go{background:none;color:var(--ink);border-radius:0;text-align:left;display:block;padding:0;margin:0}
+  .why[class*="gv-"] a.wy.go h3{color:var(--ink)}
+  .why[class*="gv-"] a.wy.go p{color:var(--ink)}
+  .why[class*="gv-"] a.wy.go p i{font-style:normal;display:inline-block;transition:transform .3s}
+  .why[class*="gv-"] a.wy.go:hover p i{transform:translateX(4px)}
+  /* A: small outline button, no block */
+  .why.gv-a a.wy.go{margin-top:28px}
+  .why.gv-a a.wy.go>div{display:inline-flex;align-items:center;gap:14px;border:1.5px solid var(--night);border-radius:99px;padding:14px 24px;transition:background .25s,color .25s}
+  .why.gv-a a.wy.go h3{font-size:16px;margin:0;letter-spacing:-.01em}
+  .why.gv-a a.wy.go h3::after{content:"·";margin-left:14px;opacity:.5}
+  .why.gv-a a.wy.go p{font-size:15px;font-weight:600}
+  .why.gv-a a.wy.go:hover>div{background:var(--night)}
+  .why.gv-a a.wy.go:hover h3,.why.gv-a a.wy.go:hover p{color:#fff}
+  /* B: fifth point, same style as the four above */
+  .why.gv-b{grid-template-columns:repeat(5,1fr)}
+  .why.gv-b a.wy.go{grid-column:auto;padding:clamp(22px,2.6vw,36px) 0}
+  .why.gv-b a.wy.go .gt{display:block}
+  .why.gv-b .wy b{font-size:clamp(34px,3.6vw,54px)}
+  .why.gv-b a.wy.go p{color:var(--ink);font-weight:600}
+  /* C: one plain row between two hairlines */
+  .why.gv-c a.wy.go{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
+  .why.gv-c a.wy.go>div{display:flex;align-items:baseline;justify-content:space-between;gap:24px}
+  .why.gv-c a.wy.go h3{font-size:clamp(22px,2vw,28px);margin:0}
+  .why.gv-c a.wy.go p{font-weight:600;font-size:16px}
+  /* D: light card with three result photos */
+  .why.gv-d a.wy.go{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-direction:row-reverse;background:var(--mist2);border-radius:var(--rc);padding:20px 20px 20px 30px;margin-top:20px}
+  .why.gv-d a.wy.go h3{font-size:clamp(22px,2vw,28px);margin:0 0 6px}
+  .why.gv-d a.wy.go p{font-weight:600}
+  .why.gv-d a.wy.go .gth{display:flex;gap:8px}
+  .why.gv-d a.wy.go .gth img{width:150px;height:100px;object-fit:cover;border-radius:16px;display:block}
+  /* E: slim dark pill bar with round photo dots */
+  .why.gv-e a.wy.go{display:flex;align-items:center;gap:18px;background:var(--night);border-radius:99px;padding:12px 30px 12px 14px;margin-top:24px}
+  .why.gv-e a.wy.go>div{flex:1;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .why.gv-e a.wy.go h3{color:#fff;font-size:19px;margin:0}
+  .why.gv-e a.wy.go p{color:#fff;font-weight:600;font-size:15px}
+  .why.gv-e a.wy.go .gth{display:flex}
+  .why.gv-e a.wy.go .gth img{width:46px;height:46px;object-fit:cover;border-radius:50%;border:2px solid var(--night);margin-left:-12px;display:block}
+  .why.gv-e a.wy.go .gth img:first-child{margin-left:0}
+}
+@media(min-width:900px){
+  .why.gv-b a.wy.go{display:block!important;place-content:normal;align-content:start}
+  .why.gv-b a.wy.go h3{font-size:19px;line-height:1.55;margin:14px 0 6px;letter-spacing:-.01em}
+  .why.gv-a a.wy.go,.why.gv-c a.wy.go{display:block!important}
+}
+
+@media(min-width:900px){
+  .why.gv-b a.wy.go .h1w{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .why.gv-b a.wy.go .hrest{display:inline-block}
+  .why.gv-b a.wy.go .hrest::first-letter{text-transform:uppercase}
+}
+
+/* offer card: "New patient special" badge stuck on the top edge */
+.ofs.ofy{position:relative;overflow:visible}
+.ofy .ofb{position:absolute;top:-14px;left:30px;height:28px;display:inline-flex;align-items:center;padding:0 14px;border-radius:99px;background:var(--night);color:#fff;font:600 11.5px var(--mono);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}
+.ofs.ofx.ofy{padding-top:32px}
+@media(max-width:820px){.ofy .ofb{left:20px}#pk-years .ofs.ofy{padding-top:30px}}
+/* badge sits inside the offer card, above the headline */
+.ofy .ofb{position:static;grid-column:1/-1;justify-self:start;margin-bottom:2px}
+.ofs.ofx.ofy{padding-top:24px}
+@media(max-width:820px){#pk-years .ofs.ofy{padding-top:22px}}
+/* quiz, phone full screen: the last screen fits one screen and its button always stays in view */
+@media(max-width:820px){
+  .qz.qfs{height:100dvh;bottom:auto}
+  .qz.qfs:has(.qsum){gap:10px}
+  .qz.qfs:has(.qsum) .qimg{width:auto;max-width:100%;height:min(26dvh,60vw);aspect-ratio:3/2;margin-inline:auto}
+  .qz.qfs:has(.qsum) .qq{font-size:22px;margin:2px 0 10px}
+  .qz.qfs .qsum{gap:6px}.qz.qfs .qsum button{padding:8px 12px}
+  .qz.qfs .qsum+.row{position:sticky;bottom:calc(-24px - env(safe-area-inset-bottom,0px));margin:12px -16px 0!important;padding:10px 16px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to bottom,rgba(245,246,245,0),var(--paper) 22%);z-index:2}
+  .qz.qfs .qsum+.row .btn{width:100%}
+}
+.qz .qq:focus{outline:none}
+/* offer label in the page's own eyebrow style: (NEW PATIENT SPECIAL), no pill */
+.ofy .ofb{height:auto;padding:0;border-radius:0;background:none;color:var(--mute);font:500 12px var(--mono);letter-spacing:.06em;margin-bottom:0}
+.ofy .ofb::before{content:"("}.ofy .ofb::after{content:")"}
+
+/* offer label: three styles to pick from (temporary switcher) */
+.ofsw{display:flex;align-items:center;gap:8px;margin:88px 0 14px;font:500 13px var(--body);color:var(--mute)}
+.ofsw button{border-radius:99px;border:1px solid var(--line);background:var(--card);font:600 13.5px var(--body);color:var(--ink);padding:8px 14px;cursor:pointer}
+.ofsw button[aria-pressed="true"]{background:var(--night);color:#fff;border-color:var(--night)}
+#pk-years .ofsw+.ofs.ofy{margin-top:0}
+@media(max-width:820px){.ofsw{margin-top:44px}}
+.ofy .ofb::before,.ofy .ofb::after{content:none}
+/* A: the page's own small label, like (REAL PATIENTS) */
+.ofy.lb-a .ofb{height:auto;padding:0;border-radius:0;background:none;color:var(--mute);font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.ofy.lb-a .ofb::before{content:"("}.ofy.lb-a .ofb::after{content:")"}
+/* B: handwritten gold accent, like "smiles" in the hero */
+.ofy.lb-b .ofb{height:auto;padding:0;border-radius:0;background:none;color:var(--goldD,#b8892b);font:600 26px/1 var(--script);letter-spacing:0;text-transform:none;margin-bottom:-4px}
+/* C: thin outlined pill, no fill */
+.ofy.lb-c .ofb{height:26px;padding:0 12px;border-radius:99px;background:none;border:1px solid var(--night);color:var(--night);font:500 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+#pk-years .ofs.ofy{margin-top:88px}
+@media(max-width:820px){#pk-years .ofs.ofy{margin-top:44px}}
 </style>
 <div id="app"></div><footer class="lf"><div class="in"><span>© 2026 Austin Lifetime Dental LLLP · 2206 W Parmer Ln, Austin, TX 78727</span><span class="lfl"><a href="https://www.lifetimedental.com/privacy-policy/" data-legal="Privacy Policy">Privacy Policy</a><a href="https://www.lifetimedental.com/terms-of-use-terms-of-service/" data-legal="Terms of Use">Terms of Use</a></span></div></footer><div id="intro" aria-hidden="true"><div class="ib"><img src="a/logo-white.png" alt=""><p>30 years of serving <em>Austin</em></p></div></div>
 <div class="fab"><a class="bk" href="#pk-form" aria-label="Book a visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a><a class="tl3" href="tel:5128351924" aria-label="Call (512) 835-1924"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
@@ -1331,7 +1524,7 @@ const S1 = [
         html: () => `<div class="sec"><div class="in"><div class="yb"><div class="yb-t"><b class="yb-n">30</b><h2 class="hd">years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle all of your dental care right here, with doctors you know and trust.</p><ul><li><b>4.9 ★</b> 800+ Google reviews</li><li><b>6</b> dentists at one practice</li></ul></div><div class="yb-v">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}</div></div></div></div>` },
       { name: 'C: Full-screen video with text', d: 'The video fills the screen, a soft dark fade at the bottom, white heading on top.',
         html: () => `<div class="yc">${(() => { const t = (Math.min(innerWidth, screen.width) < 768 ? 'tall' : 'wide'); return `<video src="${A}smile30-${t}.mp4" poster="${A}smile30-${t}.jpg" autoplay muted loop playsinline aria-hidden="true"></video>`; })()}<i class="yc-f" aria-hidden="true"></i><div class="in yc-t"><p class="eb">(Locally owned)</p><h2 class="hd">30 years of <em>smiles</em> in Austin</h2><p>At Parmer Lane and Mopac, we handle all of your dental care right here, with doctors you know and trust.</p></div></div>` },      { name: 'Why choose us', d: 'Six plain facts about the office.',
-        html: () => `<div class="sec"><div class="in">${head('Why choose us', 'Your new smile,', 'designed by dentists who care')}<div class="why m-x">${WHY.map(w => w[4] ? `<a class="wy go" href="${w[4]}"><div><h3>${w[1]}</h3><p>See real before and afters <i aria-hidden="true">→</i></p></div></a>` : `<div class="wy ${w[3] || ''}"><b>${w[0]}</b><div><h3>${w[1]}</h3><p>${w[2]}</p></div></div>`).join('')}</div><a class="ofs" href="#pk-form" data-offer><span><b>$159 new patient visit</b> · a $530 value</span><span class="ofg">Claim offer <i aria-hidden="true">→</i></span></a></div></div>`,
+        html: () => `<div class="sec"><div class="in">${head('Why choose us', 'Your new smile,', 'designed by dentists who care')}<div class="why m-x gv-b">${WHY.map(w => w[4] ? `<a class="wy go" href="${w[4]}"><b class="gt" aria-hidden="true">Results</b><span class="gth" aria-hidden="true"><img src="${A}ba-02a.webp" alt="" loading="lazy"><img src="${A}ba-10a.webp" alt="" loading="lazy"><img src="${A}ba-14a.webp" alt="" loading="lazy"></span><div><h3><span class="h1w">${w[1].split(" ")[0]} </span><span class="hrest">${w[1].split(" ").slice(1).join(" ")}</span></h3><p>See real before and afters&nbsp;<i aria-hidden="true">→</i></p></div></a>` : `<div class="wy ${w[3] || ''}"><b>${w[0]}</b><div><h3>${w[1]}</h3><p>${w[2]}</p></div></div>`).join('')}</div><a class="ofs ofx ofy lb-b" href="#pk-form" data-offer><span class="ofb">New patient special</span><span class="oft"><b>Your first visit for $159</b><span>Comprehensive exam, full set of X-rays and a professional cleaning*. A $530 value.</span></span><span class="ofg">Claim offer <i aria-hidden="true">→</i></span><span class="off">*Routine cleaning for healthy gums. If gingivitis or periodontal disease is present, a different type of cleaning is needed at an additional cost.</span></a></div></div>`,
         init: el => { const ws = [...el.querySelectorAll('.wy')]; if (!('IntersectionObserver' in window)) return ws.forEach(w => w.classList.add('seen')); const io = new IntersectionObserver(es => { let n = 0; es.forEach(e => { if (e.isIntersecting) { const t = e.target; setTimeout(() => t.classList.add('seen'), 90 * n++); io.unobserve(t); } }); }, { threshold: .25 }); ws.forEach(w => io.observe(w)); } },
     ],
   },
@@ -1607,8 +1800,8 @@ const S2 = [
           const lay = () => { const R = Math.max(170, Math.min(330, box.clientWidth * .3)); ts.forEach(t => t.style.transform = `rotateY(${t.dataset.lon}deg) rotateX(${t.dataset.lat}deg) translateZ(${R}px)`); rot.style.transform = `translateZ(${-R * .25}px) rotateX(${ax}deg) rotateY(${ay}deg)`; };
           dragRot(box, (dx, dy) => { ay += dx * .3; ax = Math.max(-28, Math.min(28, ax - dy * .2)); lay(); }, lightbox); addEventListener('resize', lay); lay(); } },
       { name: 'Before and after cards', d: 'The simple one: swipe through cards, tap “Before” to compare. Nothing moves on its own.',
-        html: () => `<div class="sec"><div class="in">${head('Real patients', 'Before', 'and after')}<div class="bacards" tabindex="0" aria-label="Results, swipe to see more">${RESULTS.map((r, i) => `<article class="ba"><div class="ph" role="button" tabindex="0" aria-pressed="false" aria-label="${r}: show before">${img(rf(i, 'a'), r + ', after')}${img(rf(i, 'b'), r + ', before', 'cover bf')}<span class="bst" aria-hidden="true"><i>After</i><i>Before</i></span><span class="bhint"><span class="hv">Hover to see before</span><span class="tp">Tap to see before</span></span></div><div class="meta"><b>${r}</b></div></article>`).join('')}</div><div class="rnav"><div class="dots"></div><div class="arr"><button type="button" class="rprev" aria-label="Previous result">←</button><button type="button" class="rnext" aria-label="Next result">→</button></div></div><p class="fine" style="margin-top:14px">${typeof FINAL !== 'undefined' ? 'Real patients of our practice. Actual results may vary.' : RNOTE}</p></div></div>`,
-        init: el => { railInit(el, '.bacards'); el.querySelectorAll('.ba').forEach(c => { const ph = c.querySelector('.ph'), set = on => { c.classList.toggle('show', on); ph.setAttribute('aria-pressed', String(on)); };
+        html: () => `<div class="sec"><div class="in">${head('Real patients', 'Before', 'and after')}<div class="bawrap"><span class="bamask" aria-hidden="true"></span><div class="bacards" tabindex="0" aria-label="Results, swipe to see more">${RESULTS.map((r, i) => `<article class="ba"><div class="ph" role="button" tabindex="0" aria-pressed="false" aria-label="${r}: show before">${img(rf(i, 'a'), r + ', after')}${img(rf(i, 'b'), r + ', before', 'cover bf')}<span class="bst" aria-hidden="true"><i>After</i><i>Before</i></span><span class="bhint"><span class="hv">Hover to see before</span><span class="tp">Tap to see before</span></span></div><div class="meta"><b>${r}</b></div></article>`).join('')}</div></div><div class="rnav"><div class="dots"></div><div class="arr"><button type="button" class="rprev" aria-label="Previous result">←</button><button type="button" class="rnext" aria-label="Next result">→</button></div></div><p class="fine" style="margin-top:14px">${typeof FINAL !== 'undefined' ? 'Real patients of our practice. Actual results may vary.' : RNOTE}</p></div></div>`,
+        init: el => { railInit(el, '.bacards'); { const row = el.querySelector('.bacards'); if ('IntersectionObserver' in window) { row.classList.add('io'); const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('full', e.intersectionRatio > .96)), { root: row, threshold: [0, .5, .96, 1] }); row.querySelectorAll('.ba').forEach(c => io.observe(c)); } } el.querySelectorAll('.ba').forEach(c => { const ph = c.querySelector('.ph'), set = on => { c.classList.toggle('show', on); ph.setAttribute('aria-pressed', String(on)); };
           ph.addEventListener('click', () => set(!c.classList.contains('show'))); ph.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); set(!c.classList.contains('show')); } }); }); } },
     ],
   },
