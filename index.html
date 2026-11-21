@@ -2076,6 +2076,7 @@ document.addEventListener('click', e => { const a = e.target.closest('a[data-leg
 /* Picker core: renders sections, switches options, saves picks to the artifact db */
 const SECTIONS = [...S1, ...S2, ...S3].filter(s => !['process', 'offer1', 'cost'].includes(s.id));
 { const r = SECTIONS.findIndex(s => s.id === 'results'), d = SECTIONS.findIndex(s => s.id === 'designer'); if (r > d) SECTIONS.splice(d, 0, SECTIONS.splice(r, 1)[0]); { const y = SECTIONS.findIndex(s => s.id === 'years'), h = SECTIONS.findIndex(s => s.id === 'hero'); SECTIONS.splice(h + 1, 0, SECTIONS.splice(y, 1)[0]); } }
+{ const r = SECTIONS.findIndex(s => s.id === 'results'); const x = SECTIONS.splice(r, 1)[0]; SECTIONS.splice(SECTIONS.findIndex(s => s.id === 'services'), 0, x); }
 SECTIONS.forEach(s => { s.v = s.v.filter(v => !v.hide); });
 const TONES = { a: ['Light capitals', 'IGOR'], b: ['Bold two-tone capitals', 'OperatorX'], c: ['Tight lowercase, one hand-written word', 'Monoform'] };
 const REFS = [
